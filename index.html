@@ -1,0 +1,3385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINISHA Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="m-0 overflow-x-hidden bg-white font-['DM_Sans'] text-neutral-900">
+
+    <!-- FESTIVE ANNOUNCEMENT -->
+    <div
+        class="flex h-5 items-center justify-center bg-[#a13d91] px-2 text-center text-[7px] font-bold tracking-[.6px] text-white sm:h-[30px] sm:text-[10px] sm:tracking-[1.5px]">
+        FESTIVE SALE IS LIVE | FLAT 20% OFF + EXTRA 10% OFF ON PREPAID ORDERS.
+    </div>
+
+    <!-- HEADER -->
+    <header class="relative z-30 grid h-12 grid-cols-3 items-center bg-white px-3 sm:h-[68px] sm:px-[5%]">
+        <div class="flex items-center gap-3 sm:gap-6">
+            <button onclick="openMenu()" aria-label="Open navigation menu"
+                class="flex items-center justify-center lg:hidden">
+                <svg class="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 7h18M3 12h18M3 17h18" />
+                </svg>
+            </button>
+            <button onclick="openSearch()" aria-label="Search" class="flex items-center justify-center">
+                <svg class="h-[17px] w-[17px] sm:h-[21px] sm:w-[21px]" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.6">
+                    <circle cx="10.8" cy="10.8" r="6.8" />
+                    <path d="m16 16 5 5" />
+                </svg>
+            </button>
+        </div>
+        <a href="#"
+            class="whitespace-nowrap text-center font-['Playfair_Display'] text-[19px] tracking-[.5px] text-[#84366f] sm:text-[30px]">
+            SHINISHA
+        </a>
+        <div class="flex items-center justify-end gap-3 sm:gap-5">
+            <button onclick="openMenu()" aria-label="Account" class="flex items-center justify-center">
+                <svg class="h-[17px] w-[17px] sm:h-[21px] sm:w-[21px]" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="3.5" />
+                    <path d="M4.5 20c0-4.1 3-6.5 7.5-6.5s7.5 2.4 7.5 6.5" />
+                </svg>
+            </button>
+            <button onclick="openMenu()" aria-label="Shopping bag" class="flex items-center justify-center">
+                <svg class="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5">
+                    <path d="M5 8h14l1.2 13H3.8L5 8Z" />
+                    <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- DESKTOP NAVIGATION -->
+    <nav
+        class="relative z-20 hidden min-h-[34px] items-center justify-center gap-5 bg-white px-2 pb-3 lg:flex xl:gap-7">
+        <a href="#new-arrivals" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">NEW ARRIVALS</a>
+        <a href="#co-ord-sets" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">CO-ORD SETS</a>
+        <a href="#kurta-sets" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">KURTA SET</a>
+        <a href="#dresses" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">DRESSES</a>
+        <a href="#kurtis" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">KURTIS</a>
+        <a href="#plus-size" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">PLUS SIZE</a>
+        <a href="#best-seller" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">BEST SELLER</a>
+        <a href="#reviews" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">REVIEWS</a>
+        <a href="#track-order" class="text-[10px] tracking-[.7px] hover:text-[#a13d91]">TRACK ORDER</a>
+    </nav>
+
+    <!-- HERO SLIDER -->
+    <section class="relative w-full overflow-hidden bg-transparent">
+        <div id="sliderTrack" class="flex w-full transition-transform duration-700 ease-in-out">
+            <a href="#new-arrivals"
+                class="relative block aspect-[2/1] w-full shrink-0 overflow-hidden bg-transparent sm:aspect-[16/5] lg:aspect-[16/5]">
+                <img src="https://divenaworld.com/cdn/shop/files/Karwachauth.jpg?v=1792492627&width=1920"
+                    alt="Festive fashion collection" fetchpriority="high"
+                    class="absolute inset-0 h-full w-full object-contain object-center">
+            </a>
+            <a href="#co-ord-sets"
+                class="relative block aspect-[2/1] w-full shrink-0 overflow-hidden bg-transparent sm:aspect-[16/5] lg:aspect-[16/5]">
+                <img src="https://shinisha.in/cdn/shop/files/Shinisha_Web_Slider_-.jpg_1.jpg?v=1792669202&width=1920"
+                    alt="Women's festive fashion" loading="lazy"
+                    class="absolute inset-0 h-full w-full object-contain object-center">
+            </a>
+            <a href="#best-seller"
+                class="relative block aspect-[2/1] w-full shrink-0 overflow-hidden bg-transparent sm:aspect-[16/5] lg:aspect-[16/5]">
+                <img src="https://shinisha.in/cdn/shop/files/231026-Shinisha-banner.png?v=1792759792&width=1920"
+                    alt="Women's fashion collection" loading="lazy"
+                    class="absolute inset-0 h-full w-full object-contain object-center">
+            </a>
+        </div>
+        <div class="absolute bottom-0 left-0 z-10 h-[2px] w-full bg-neutral-200 sm:h-[3px]">
+            <div id="progressFill" class="h-full w-0 bg-[#a13d91]"></div>
+        </div>
+    </section>
+
+    <!-- SEARCH POPUP -->
+    <div id="searchOverlay"
+        class="invisible fixed inset-0 z-[100] bg-black/40 opacity-0 transition-opacity duration-300">
+        <div id="searchPanel"
+            class="absolute left-0 top-0 w-full -translate-y-full bg-white px-5 pb-6 pt-5 shadow-xl transition-transform duration-500 ease-out sm:px-[6%]">
+            <div class="mb-4 flex items-center justify-between">
+                <span class="font-['Playfair_Display'] text-2xl text-[#84366f]">SHINISHA</span>
+                <button onclick="closeSearch()" aria-label="Close search"
+                    class="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-2xl">
+                    &times;
+                </button>
+            </div>
+            <form id="searchForm" class="flex items-center gap-3 border-b border-neutral-300">
+                <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="10.8" cy="10.8" r="6.8" />
+                    <path d="m16 16 5 5" />
+                </svg>
+                <input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products"
+                    class="w-full border-0 bg-transparent py-3 text-sm outline-none">
+            </form>
+        </div>
+    </div>
+
+    <!-- NAVIGATION POPUP -->
+    <div id="menuOverlay" class="invisible fixed inset-0 z-[110] bg-black/40 opacity-0 transition-opacity duration-300">
+        <div id="menuPanel"
+            class="absolute bottom-0 left-0 max-h-[80vh] w-full translate-y-full overflow-y-auto rounded-t-2xl bg-white px-5 pb-7 pt-4 shadow-xl transition-transform duration-500 ease-out sm:px-[6%]">
+            <div class="mx-auto mb-5 h-1 w-10 rounded-full bg-neutral-300"></div>
+            <div class="mb-4 flex items-center justify-between">
+                <span class="font-['Playfair_Display'] text-2xl text-[#84366f]">SHINISHA</span>
+                <button onclick="closeMenu()" aria-label="Close navigation"
+                    class="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 text-2xl">
+                    &times;
+                </button>
+            </div>
+            <nav class="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+                <a href="#new-arrivals"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">NEW
+                    ARRIVALS <span>↗</span></a>
+                <a href="#co-ord-sets"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">CO-ORD
+                    SETS <span>↗</span></a>
+                <a href="#kurta-sets"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">KURTA
+                    SET <span>↗</span></a>
+                <a href="#dresses"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">DRESSES
+                    <span>↗</span></a>
+                <a href="#kurtis"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">KURTIS
+                    <span>↗</span></a>
+                <a href="#plus-size"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">PLUS
+                    SIZE <span>↗</span></a>
+                <a href="#best-seller"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">BEST
+                    SELLER <span>↗</span></a>
+                <a href="#reviews"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">REVIEWS
+                    <span>↗</span></a>
+                <a href="#track-order"
+                    class="flex justify-between border-b border-neutral-100 py-3 text-xs tracking-wide hover:text-[#a13d91]">TRACK
+                    ORDER <span>↗</span></a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT (popups + hero slider) -->
+    <script>
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchPanel = document.getElementById('searchPanel');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuPanel = document.getElementById('menuPanel');
+
+        function openSearch() {
+            closeMenu();
+            searchOverlay.classList.remove('invisible');
+            requestAnimationFrame(() => {
+                searchOverlay.classList.remove('opacity-0');
+                searchOverlay.classList.add('opacity-100');
+                searchPanel.classList.remove('-translate-y-full');
+                searchPanel.classList.add('translate-y-0');
+            });
+            document.body.classList.add('overflow-hidden');
+            setTimeout(() => {
+                document.getElementById('searchInput').focus();
+            }, 350);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('opacity-100');
+            searchOverlay.classList.add('opacity-0');
+            searchPanel.classList.remove('translate-y-0');
+            searchPanel.classList.add('-translate-y-full');
+            setTimeout(() => {
+                searchOverlay.classList.add('invisible');
+                if (!menuOverlay.classList.contains('opacity-100')) {
+                    document.body.classList.remove('overflow-hidden');
+                }
+            }, 500);
+        }
+
+        searchOverlay.addEventListener('click', event => {
+            if (event.target === searchOverlay) closeSearch();
+        });
+
+        function openMenu() {
+            closeSearch();
+            menuOverlay.classList.remove('invisible');
+            requestAnimationFrame(() => {
+                menuOverlay.classList.remove('opacity-0');
+                menuOverlay.classList.add('opacity-100');
+                menuPanel.classList.remove('translate-y-full');
+                menuPanel.classList.add('translate-y-0');
+            });
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeMenu() {
+            menuOverlay.classList.remove('opacity-100');
+            menuOverlay.classList.add('opacity-0');
+            menuPanel.classList.remove('translate-y-0');
+            menuPanel.classList.add('translate-y-full');
+            setTimeout(() => {
+                menuOverlay.classList.add('invisible');
+                if (!searchOverlay.classList.contains('opacity-100')) {
+                    document.body.classList.remove('overflow-hidden');
+                }
+            }, 500);
+        }
+
+        menuOverlay.addEventListener('click', event => {
+            if (event.target === menuOverlay) closeMenu();
+        });
+
+        document.querySelectorAll('#menuPanel a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeSearch();
+                closeMenu();
+            }
+        });
+
+        document.getElementById('searchForm').addEventListener('submit', event => {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) window.location.href = '/search?q=' + encodeURIComponent(query);
+        });
+
+        /* HERO SLIDER */
+        const track = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('#sliderTrack > a');
+        const progressFill = document.getElementById('progressFill');
+        const duration = 5500;
+        let currentIndex = 0;
+        let sliderTimer;
+
+        function showSlide(index) {
+            currentIndex = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            progressFill.style.transition = 'none';
+            progressFill.style.width = '0%';
+            void progressFill.offsetWidth;
+            progressFill.style.transition = `width ${duration}ms linear`;
+            progressFill.style.width = '100%';
+        }
+
+        function startSlider() {
+            clearInterval(sliderTimer);
+            if (!document.hidden) {
+                showSlide(currentIndex);
+                sliderTimer = setInterval(() => showSlide(currentIndex + 1), duration);
+            }
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) clearInterval(sliderTimer);
+            else startSlider();
+        });
+
+        let startX = 0;
+        const hero = document.querySelector('section');
+        hero.addEventListener('touchstart', event => {
+            startX = event.changedTouches[0].screenX;
+        }, { passive: true });
+        hero.addEventListener('touchend', event => {
+            const endX = event.changedTouches[0].screenX;
+            const difference = endX - startX;
+            if (Math.abs(difference) > 50) {
+                showSlide(difference < 0 ? currentIndex + 1 : currentIndex - 1);
+                clearInterval(sliderTimer);
+                sliderTimer = setInterval(() => showSlide(currentIndex + 1), duration);
+            }
+        }, { passive: true });
+        startSlider();
+    </script>
+
+
+
+    <!-- ================================================ -->
+    <!-- PRODUCT SLIDER (FIXED LEFT/RIGHT BUTTONS)        -->
+    <!-- ================================================ -->
+    <section class="collection">
+        <header class="heading">
+            <small>THE NEW COLLECTION</small>
+            <h1>Everyday Essentials.</h1>
+            <p>Discover your next favourite.</p>
+        </header>
+
+        <div class="rail-scene">
+            <div class="rail-bracket left"></div>
+            <div class="steel-rod"></div>
+            <div class="rail-bracket right"></div>
+        </div>
+
+        <div class="products-scroll" id="productsScroll">
+            <div class="products">
+                <!-- PRODUCT 1 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front" src="./images-removebg-preview.png" alt="Classic T-shirt"
+                                    draggable="false">
+                                <img class="shirt-back" src="./Green_Front-removebg-preview.png" alt="Alternate T-shirt"
+                                    draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹629, offer price ₹499, save 20%">
+                                    <span class="tag-mrp">MRP ₹629</span><span class="tag-price">₹499</span><span
+                                        class="tag-save">SAVE 20%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>BESTSELLER</small>
+                        <h3>Classic Essential Tee</h3>
+                        <p>₹499</p>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 2 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front"
+                                    src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=85"
+                                    alt="Casual T-shirt" draggable="false">
+                                <img class="shirt-back"
+                                    src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alternate casual shirt" draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹709, offer price ₹599, save 15%">
+                                    <span class="tag-mrp">MRP ₹709</span><span class="tag-price">₹599</span><span
+                                        class="tag-save">SAVE 15%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>NEW ARRIVAL</small>
+                        <h3>Modern Casual Tee</h3>
+                        <p>₹599</p>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 3 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front"
+                                    src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=85"
+                                    alt="Fashion shirt" draggable="false">
+                                <img class="shirt-back"
+                                    src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alternate fashion shirt" draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹699, offer price ₹549, save 20%">
+                                    <span class="tag-mrp">MRP ₹699</span><span class="tag-price">₹549</span><span
+                                        class="tag-save">SAVE 20%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>ESSENTIALS</small>
+                        <h3>Everyday Cotton Tee</h3>
+                        <p>₹549</p>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 4 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front"
+                                    src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=700&q=85"
+                                    alt="Streetwear T-shirt" draggable="false">
+                                <img class="shirt-back"
+                                    src="https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alternate clothing" draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹999, offer price ₹699, save 25%">
+                                    <span class="tag-mrp">MRP ₹999</span><span class="tag-price">₹699</span><span
+                                        class="tag-save">SAVE 25%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>POPULAR</small>
+                        <h3>Streetwear Tee</h3>
+                        <p>₹699</p>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 5 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front"
+                                    src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=700&q=85"
+                                    alt="Formal shirt" draggable="false">
+                                <img class="shirt-back"
+                                    src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alternate formal shirt" draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹1129, offer price ₹899, save 20%">
+                                    <span class="tag-mrp">MRP ₹1129</span><span class="tag-price">₹899</span><span
+                                        class="tag-save">SAVE 20%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>PREMIUM</small>
+                        <h3>Premium Formal Shirt</h3>
+                        <p>₹899</p>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 6 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front"
+                                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=85"
+                                    alt="Fashion outfit" draggable="false">
+                                <img class="shirt-back"
+                                    src="https://images.unsplash.com/photo-1618354691229-88d47f285158?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alternate outfit" draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹949, offer price ₹799, save 15%">
+                                    <span class="tag-mrp">MRP ₹949</span><span class="tag-price">₹799</span><span
+                                        class="tag-save">SAVE 15%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>JUST DROPPED</small>
+                        <h3>Relaxed Fit Shirt</h3>
+                        <p>₹799</p>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 7 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front"
+                                    src="https://images.unsplash.com/photo-1627225924765-552d49cf47ad?auto=format&fit=crop&w=700&q=85"
+                                    alt="Fashion clothing" draggable="false">
+                                <img class="shirt-back"
+                                    src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alternate clothing" draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹819, offer price ₹649, save 20%">
+                                    <span class="tag-mrp">MRP ₹819</span><span class="tag-price">₹649</span><span
+                                        class="tag-save">SAVE 20%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>COLLECTION</small>
+                        <h3>Weekend Essential</h3>
+                        <p>₹649</p>
+                    </div>
+                </article>
+
+                <!-- PRODUCT 8 -->
+                <article class="product">
+                    <div class="product-visual">
+                        <div class="hanging-assembly">
+                            <div class="thread-ring"></div>
+                            <div class="thread"></div>
+                            <div class="shirt-stage">
+                                <img class="shirt-front"
+                                    src="https://images.unsplash.com/photo-1564859228273-274232fdb516?auto=format&fit=crop&w=700&q=85"
+                                    alt="Signature fashion" draggable="false">
+                                <img class="shirt-back"
+                                    src="https://images.unsplash.com/photo-1620012253295-c15a3e2f9a1d?auto=format&fit=crop&w=700&q=85"
+                                    alt="Alternate signature fashion" draggable="false">
+                                <div class="price-tag" aria-label="MRP ₹1399, offer price ₹999, save 25%">
+                                    <span class="tag-mrp">MRP ₹1399</span><span class="tag-price">₹999</span><span
+                                        class="tag-save">SAVE 25%</span>
+                                </div>
+                                <div class="size-stack" role="group" aria-label="Select size" data-product-size>
+                                    <button type="button" class="size-option" data-size="S"
+                                        aria-pressed="false">S</button>
+                                    <button type="button" class="size-option" data-size="M"
+                                        aria-pressed="false">M</button>
+                                    <button type="button" class="size-option" data-size="L"
+                                        aria-pressed="false">L</button>
+                                    <button type="button" class="size-option" data-size="XL"
+                                        aria-pressed="false">XL</button>
+                                    <button type="button" class="size-option" data-size="XXL"
+                                        aria-pressed="false">XXL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info"><small>LIMITED EDITION</small>
+                        <h3>Signature Collection</h3>
+                        <p>₹999</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- SCROLL BUTTONS -->
+        <div class="scroll-controls">
+            <button type="button" id="scrollLeft" aria-label="Scroll left">&#8592;</button>
+            <button type="button" id="scrollRight" aria-label="Scroll right">&#8594;</button>
+        </div>
+    </section>
+
+    <!-- FIXED SLIDER JAVASCRIPT -->
+    <script>
+        const slider = document.getElementById("productsScroll");
+        const leftButton = document.getElementById("scrollLeft");
+        const rightButton = document.getElementById("scrollRight");
+        let scrollTimer;
+
+        function startSwingingAllClothes() {
+            slider.classList.add("is-scrolling");
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => {
+                slider.classList.remove("is-scrolling");
+            }, 350);
+        }
+
+        slider.addEventListener("scroll", startSwingingAllClothes, { passive: true });
+
+        // FIXED: scrollBy works reliably
+        leftButton.addEventListener("click", () => {
+            slider.scrollBy({ left: -450, behavior: "smooth" });
+            startSwingingAllClothes();
+        });
+
+        rightButton.addEventListener("click", () => {
+            slider.scrollBy({ left: 450, behavior: "smooth" });
+            startSwingingAllClothes();
+        });
+
+        // Size selection on each product card
+        document.querySelectorAll(".size-stack").forEach(sizeStack => {
+            sizeStack.addEventListener("click", event => {
+                const button = event.target.closest(".size-option");
+                if (!button) return;
+                sizeStack.querySelectorAll(".size-option").forEach(option => {
+                    option.classList.remove("is-selected");
+                    option.setAttribute("aria-pressed", "false");
+                });
+                button.classList.add("is-selected");
+                button.setAttribute("aria-pressed", "true");
+                sizeStack.dataset.selectedSize = button.dataset.size;
+            });
+        });
+
+        // Mouse drag scroll
+        let dragging = false, startXMouse = 0, initialScroll = 0;
+        slider.addEventListener("mousedown", event => {
+            if (event.target.closest("button")) return;
+            dragging = true;
+            startXMouse = event.pageX;
+            initialScroll = slider.scrollLeft;
+        });
+        window.addEventListener("mouseup", () => dragging = false);
+        window.addEventListener("mousemove", event => {
+            if (!dragging) return;
+            const distance = event.pageX - startXMouse;
+            if (Math.abs(distance) > 2) {
+                slider.scrollLeft = initialScroll - distance;
+                startSwingingAllClothes();
+            }
+        });
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f4f0;
+            color: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        .collection {
+            padding: 45px 0 30px;
+            overflow: hidden;
+        }
+
+        .heading {
+            text-align: center;
+            padding: 0 15px;
+            margin-bottom: 45px;
+        }
+
+        .heading small {
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .heading h1 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 500;
+            margin: 12px 0;
+        }
+
+        .heading p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .rail-scene {
+            position: relative;
+            height: 24px;
+            width: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .steel-rod {
+            position: absolute;
+            top: 50%;
+            left: 26px;
+            right: 26px;
+            height: 7px;
+            transform: translateY(-50%);
+            background: linear-gradient(to bottom, #fff, #c6c6c6 18%, #777 40%, #eee 58%, #999 80%, #fafafa);
+            border-top: 1px solid #aaa;
+            border-bottom: 1px solid #999;
+            box-shadow: 0 1px 2px #0003;
+        }
+
+        .rail-bracket {
+            position: absolute;
+            top: 50%;
+            width: 28px;
+            height: 22px;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #bdbdbd, #f8f8f8 35%, #bdbdbd 75%, #eee);
+            border: 1px solid #aaa;
+            border-radius: 2px;
+        }
+
+        .rail-bracket.left {
+            left: 0;
+        }
+
+        .rail-bracket.right {
+            right: 0;
+        }
+
+        .products-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0 20px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #aaa transparent;
+            -webkit-overflow-scrolling: touch;
+            cursor: grab;
+        }
+
+        .products-scroll:active {
+            cursor: grabbing;
+        }
+
+        .products {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            width: max-content;
+            min-width: 100%;
+        }
+
+        .product {
+            flex: 0 0 250px;
+            width: 250px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .product-visual {
+            position: relative;
+            height: 365px;
+        }
+
+        .hanging-assembly {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            width: 100%;
+            height: 355px;
+            transform: translateX(-50%);
+            transform-origin: 50% 12px;
+        }
+
+        .thread {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1.5px;
+            height: 49px;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, #888, #292929 45%, #b8b8b8);
+            box-shadow: 0 0 1px #0004;
+            z-index: 2;
+        }
+
+        .thread-ring {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            transform: translateX(-50%);
+            border: 1px solid #777;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff, #aaa, #eee);
+            z-index: 3;
+        }
+
+        .shirt-stage {
+            position: absolute;
+            top: 43px;
+            left: 0;
+            width: 100%;
+            height: 300px;
+        }
+
+        .shirt-stage img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center top;
+            transform: translateX(-50%);
+            transition: opacity .35s ease;
+            backface-visibility: hidden;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .shirt-front {
+            opacity: 1;
+        }
+
+        .shirt-back {
+            opacity: 0;
+        }
+
+        .product:hover .shirt-front {
+            opacity: 0;
+        }
+
+        .product:hover .shirt-back {
+            opacity: 1;
+        }
+
+        .product:hover .hanging-assembly {
+            animation: individualSwing .9s ease-in-out;
+        }
+
+        @keyframes individualSwing {
+            0% {
+                transform: translateX(-50%) rotate(0);
+            }
+
+            20% {
+                transform: translateX(-50%) rotate(3deg);
+            }
+
+            40% {
+                transform: translateX(-50%) rotate(-2.2deg);
+            }
+
+            60% {
+                transform: translateX(-50%) rotate(1.4deg);
+            }
+
+            80% {
+                transform: translateX(-50%) rotate(-.6deg);
+            }
+
+            100% {
+                transform: translateX(-50%) rotate(0);
+            }
+        }
+
+        .products-scroll.is-scrolling .hanging-assembly {
+            animation: scrollSwing .28s ease-in-out infinite alternate;
+        }
+
+        @keyframes scrollSwing {
+            0% {
+                transform: translateX(-50%) rotate(-5deg);
+            }
+
+            100% {
+                transform: translateX(-50%) rotate(2deg);
+            }
+        }
+
+        .price-tag {
+            position: absolute;
+            z-index: 6;
+            top: 8px;
+            right: 7px;
+            width: 58px;
+            min-height: 65px;
+            padding: 10px 3px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            color: #29251f;
+            text-align: center;
+            background: #f8f3e8;
+            border: 1px solid #d8cdb8;
+            border-radius: 2px 2px 5px 2px;
+            box-shadow: 1px 3px 6px #0002;
+            transform: rotate(3deg);
+            transform-origin: 50% 0;
+            pointer-events: none;
+        }
+
+        .price-tag::before {
+            content: "";
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            width: 1.5px;
+            height: 9px;
+            background: linear-gradient(to right, #777, #b6aa94);
+        }
+
+        .price-tag::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            border: 1px solid #b9ad98;
+            border-radius: 50%;
+            background: #f8f3e8;
+            transform: translateX(-50%);
+        }
+
+        .tag-mrp {
+            margin-top: 3px;
+            color: #817b70;
+            font-size: 7px;
+            line-height: 1;
+            text-decoration: line-through;
+            text-decoration-color: #d93636;
+            text-decoration-thickness: 1.3px;
+            white-space: nowrap;
+        }
+
+        .tag-price {
+            font-size: 11px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -.3px;
+            white-space: nowrap;
+        }
+
+        .tag-save {
+            padding: 3px;
+            color: #fff;
+            background: #b72d2d;
+            border-radius: 2px;
+            font-size: 6px;
+            line-height: 1;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .size-stack {
+            position: absolute;
+            z-index: 8;
+            left: 5px;
+            bottom: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .size-option {
+            width: 28px;
+            height: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border: 1px solid #d4cfc5;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, .94);
+            color: #49443d;
+            font: 10px Arial, sans-serif;
+            cursor: pointer;
+            box-shadow: 0 1px 2px #00000012;
+            transition: background .18s ease, color .18s ease, border-color .18s ease;
+        }
+
+        .size-option:hover,
+        .size-option.is-selected {
+            border-color: #f15d78;
+            background: #f15d78;
+            color: #fff;
+        }
+
+        .size-option:focus-visible {
+            outline: 2px solid #292929;
+            outline-offset: 2px;
+        }
+
+        .info {
+            padding: 12px 5px 25px;
+        }
+
+        .info small {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #777;
+        }
+
+        .info h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 9px 0;
+        }
+
+        .info p {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .scroll-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 15px 25px 0;
+        }
+
+        .scroll-controls button {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            background: transparent;
+            color: #222;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .scroll-controls button:hover {
+            background: #222;
+            color: #fff;
+        }
+
+        @media(max-width:600px) {
+            .collection {
+                padding-top: 35px;
+            }
+
+            .products-scroll {
+                padding: 0 12px;
+            }
+
+            .products {
+                gap: 12px;
+            }
+
+            .product {
+                flex-basis: 210px;
+                width: 210px;
+            }
+
+            .product-visual {
+                height: 305px;
+            }
+
+            .hanging-assembly {
+                height: 295px;
+            }
+
+            .shirt-stage {
+                top: 40px;
+                height: 245px;
+            }
+
+            .price-tag {
+                top: 7px;
+                right: 4px;
+                width: 53px;
+                min-height: 60px;
+                padding: 9px 2px 4px;
+            }
+
+            .tag-price {
+                font-size: 10px;
+            }
+
+            .tag-mrp {
+                font-size: 6px;
+            }
+
+            .tag-save {
+                font-size: 5px;
+            }
+
+            .size-stack {
+                left: 3px;
+                bottom: 3px;
+                gap: 2px;
+            }
+
+            .size-option {
+                width: 25px;
+                height: 17px;
+                font-size: 9px;
+            }
+
+            .info h3 {
+                font-size: 13px;
+            }
+
+            .scroll-controls {
+                padding-right: 15px;
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+
+
+
+
+
+
+    <!-- ==========================================
+     SHINISHA — MINIMAL CATEGORY SECTION
+========================================== -->
+
+    <section class="category-showcase">
+
+        <div class="category-container">
+
+            <!-- CENTERED HEADING -->
+            <div class="category-heading">
+                <span class="category-eyebrow">THE STYLE EDIT</span>
+
+                <h2>Find Your <span>Style</span></h2>
+
+                <p>Explore collections made for every mood and moment.</p>
+            </div>
+
+
+            <!-- FIVE CATEGORY CARDS -->
+            <div class="category-grid">
+
+                <!-- 01 KURTIS -->
+                <a href="/collections/kurtis" class="category-card category-tall">
+
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85"
+                        alt="Kurtis collection" loading="lazy">
+
+                    <span class="category-number">01</span>
+
+                    <div class="category-caption">
+                        <h3>Kurtis</h3>
+                        <span class="category-explore">Explore Collection ↗</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 02 ETHNIC WEAR -->
+                <a href="/collections/ethnic-wear" class="category-card">
+
+                    <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85"
+                        alt="Ethnic wear collection" loading="lazy">
+
+                    <span class="category-number">02</span>
+
+                    <div class="category-caption">
+                        <h3>Ethnic Wear</h3>
+                        <span class="category-explore">Explore Collection ↗</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 03 DRESSES -->
+                <a href="/collections/dresses" class="category-card">
+
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85"
+                        alt="Dresses collection" loading="lazy">
+
+                    <span class="category-number">03</span>
+
+                    <div class="category-caption">
+                        <h3>Dresses</h3>
+                        <span class="category-explore">Explore Collection ↗</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 04 CO-ORD SETS -->
+                <a href="/collections/co-ord-sets" class="category-card">
+
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85"
+                        alt="Co-ord sets collection" loading="lazy">
+
+                    <span class="category-number">04</span>
+
+                    <div class="category-caption">
+                        <h3>Co-ord Sets</h3>
+                        <span class="category-explore">Explore Collection ↗</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 05 NEW ARRIVALS -->
+                <a href="/collections/new-arrivals" class="category-card">
+
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85"
+                        alt="New arrivals collection" loading="lazy">
+
+                    <span class="category-number">05</span>
+
+                    <div class="category-caption">
+                        <h3>New Arrivals</h3>
+                        <span class="category-explore">Explore Collection ↗</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- BOTTOM LINK -->
+            <div class="category-bottom">
+                <a href="/collections">
+                    DISCOVER ALL COLLECTIONS
+                    <span>↗</span>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <style>
+        /* ==========================================
+   SECTION
+========================================== */
+
+        .category-showcase {
+            width: 100%;
+            overflow: hidden;
+            padding: 75px 20px;
+            background: #ffffff;
+            color: #242124;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .category-container {
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+
+        /* ==========================================
+   CENTERED HEADING
+========================================== */
+
+        .category-heading {
+            margin-bottom: 42px;
+            text-align: center;
+        }
+
+        .category-eyebrow {
+            display: inline-block;
+            margin-bottom: 13px;
+            color: #9a527f;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        .category-heading h2 {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(27px, 4vw, 42px);
+            font-weight: 500;
+            letter-spacing: -1.5px;
+        }
+
+        .category-heading h2 span {
+            color: #a25285;
+            font-weight: 400;
+        }
+
+        .category-heading p {
+            margin: 12px 0 0;
+            color: #777;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        /* ==========================================
+   CATEGORY GRID
+========================================== */
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+
+        /* ==========================================
+   CATEGORY CARDS
+========================================== */
+
+        .category-card {
+            position: relative;
+            display: block;
+            grid-column: span 2;
+            min-width: 0;
+            height: 300px;
+            overflow: hidden;
+            background: #f3edf1;
+            isolation: isolate;
+            text-decoration: none;
+        }
+
+        .category-card.category-tall {
+            grid-row: span 2;
+            grid-column: span 2;
+            height: 617px;
+        }
+
+        .category-card:nth-child(2),
+        .category-card:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        .category-card:nth-child(4),
+        .category-card:nth-child(5) {
+            grid-column: span 2;
+        }
+
+
+        /* ==========================================
+   IMAGE
+========================================== */
+
+        .category-card img {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.8s cubic-bezier(.2, .7, .2, 1);
+        }
+
+        .category-card:hover img {
+            transform: scale(1.07);
+        }
+
+
+        /* ==========================================
+   BOTTOM GRADIENT
+========================================== */
+
+        .category-card::after {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(to top,
+                    rgba(15, 12, 15, 0.75) 0%,
+                    rgba(15, 12, 15, 0.22) 35%,
+                    transparent 65%);
+            content: "";
+            transition: opacity 0.4s ease;
+        }
+
+        .category-card:hover::after {
+            opacity: 0.85;
+        }
+
+
+        /* ==========================================
+   CATEGORY NUMBER — TOP RIGHT
+========================================== */
+
+        .category-number {
+            position: absolute;
+            top: 13px;
+            right: 13px;
+            display: flex;
+            width: 33px;
+            height: 33px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            color: white;
+            font-size: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+
+        /* ==========================================
+   CENTERED BOTTOM TEXT
+========================================== */
+
+        .category-caption {
+            position: absolute;
+            right: 10px;
+            bottom: 25px;
+            left: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .category-caption h3 {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(17px, 2vw, 23px);
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: transform 0.3s ease;
+        }
+
+        .category-explore {
+            display: inline-block;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            margin-top: 0;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            transition:
+                max-height 0.3s ease,
+                margin-top 0.3s ease,
+                opacity 0.3s ease;
+        }
+
+        .category-card:hover .category-explore {
+            max-height: 24px;
+            margin-top: 9px;
+            opacity: 1;
+        }
+
+        .category-card:hover .category-caption h3 {
+            transform: translateY(-2px);
+        }
+
+
+        /* ==========================================
+   BOTTOM COLLECTION LINK
+========================================== */
+
+        .category-bottom {
+            margin-top: 38px;
+            text-align: center;
+        }
+
+        .category-bottom a {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #b78ca9;
+            color: #4d3749;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .category-bottom a:hover {
+            color: #a25285;
+        }
+
+        .category-bottom a span {
+            font-size: 15px;
+        }
+
+
+        /* ==========================================
+   TABLET
+========================================== */
+
+        @media (max-width: 900px) {
+            .category-showcase {
+                padding: 60px 20px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .category-card,
+            .category-card:nth-child(n) {
+                grid-column: span 1;
+                grid-row: auto;
+                height: 300px;
+            }
+
+            .category-card.category-tall {
+                grid-column: span 2;
+                grid-row: auto;
+                height: 360px;
+            }
+        }
+
+
+        /* ==========================================
+   MOBILE
+========================================== */
+
+        @media (max-width: 600px) {
+            .category-showcase {
+                padding: 45px 13px;
+            }
+
+            .category-heading {
+                margin-bottom: 25px;
+            }
+
+            .category-heading h2 {
+                font-size: 29px;
+                letter-spacing: -0.8px;
+            }
+
+            .category-heading p {
+                max-width: 300px;
+                margin: 10px auto 0;
+                font-size: 12px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .category-card,
+            .category-card:nth-child(n) {
+                grid-column: span 1;
+                height: 225px;
+            }
+
+            .category-card.category-tall {
+                grid-column: span 2;
+                height: 300px;
+            }
+
+            .category-caption {
+                bottom: 16px;
+            }
+
+            .category-caption h3 {
+                font-size: 17px;
+            }
+
+            .category-explore {
+                max-height: none;
+                margin-top: 5px;
+                opacity: 1;
+                font-size: 9px;
+            }
+
+            .category-number {
+                top: 9px;
+                right: 9px;
+                width: 28px;
+                height: 28px;
+                font-size: 9px;
+            }
+
+            .category-bottom {
+                margin-top: 27px;
+            }
+        }
+
+
+        /* ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .category-card *,
+            .category-card::after,
+            .category-bottom a {
+                transition: none !important;
+            }
+        }
+    </style>
+
+    <!-- ================================================ -->
+    <!-- LATEST COLLECTION + QUICK VIEW                   -->
+    <!-- ================================================ -->
+    <section id="latest-collection" class="bg-white px-3 py-8 sm:px-6 sm:py-10 lg:px-10">
+        <div class="mx-auto mb-7 max-w-[1400px] text-center sm:mb-9">
+            <h2 class="text-xl font-normal tracking-[3px] text-[#b43b9b] sm:text-2xl">LATEST COLLECTION</h2>
+            <div class="mx-auto mt-3 h-[2px] w-12 bg-[#ed4e83]"></div>
+        </div>
+        <div id="productGrid"
+            class="mx-auto grid max-w-[1400px] grid-cols-2 gap-x-3 gap-y-7 sm:gap-x-5 sm:gap-y-9 lg:grid-cols-4 lg:gap-x-6">
+        </div>
+    </section>
+
+    <!-- QUICK VIEW POPUP -->
+    <div id="quickViewModal"
+        class="fixed inset-0 z-[200] hidden items-center justify-center overflow-y-auto bg-black/50 p-2 sm:p-5">
+        <div class="relative my-auto w-full max-w-5xl bg-white shadow-2xl">
+            <button id="closeQuickView" aria-label="Close quick view"
+                class="absolute right-2 top-2 z-30 flex h-9 w-9 items-center justify-center bg-white text-2xl text-neutral-800">
+                &times;
+            </button>
+            <div class="grid grid-cols-1 gap-4 p-3 sm:p-5 md:grid-cols-2 md:gap-6">
+                <div class="flex min-w-0 gap-2 sm:gap-3">
+                    <div id="quickViewThumbnails" class="flex w-12 shrink-0 flex-col gap-2 sm:w-16"></div>
+                    <div class="relative min-w-0 flex-1 self-start overflow-hidden bg-neutral-100">
+                        <img id="quickViewImage" src="" alt="Product" class="aspect-[3/4] w-full object-cover">
+                        <span class="absolute right-0 top-0 bg-[#f45d79] px-2 py-1 text-[9px] font-medium text-white">
+                            SALE
+                        </span>
+                    </div>
+                </div>
+                <div class="min-w-0 pt-1">
+                    <h2 id="quickViewTitle"
+                        class="pr-7 text-sm font-medium uppercase leading-relaxed tracking-[1px] sm:text-base"></h2>
+                    <div
+                        class="mt-3 flex flex-wrap items-center justify-center gap-2 bg-[#a75b29] px-2 py-2 text-[9px] font-semibold text-white">
+                        <span>FESTIVE SALE</span>
+                        <span class="bg-yellow-300 px-2 py-1 text-neutral-900">SPECIAL OFFER</span>
+                    </div>
+                    <div class="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                        <span id="quickViewOriginalPrice" class="text-neutral-400 line-through"></span>
+                        <span id="quickViewPrice" class="font-semibold text-neutral-900"></span>
+                        <span id="quickViewSavings" class="text-[10px] font-medium text-[#ed6682]"></span>
+                    </div>
+                    <p class="mt-1 text-[9px] text-neutral-500">Inclusive of all applicable taxes.</p>
+                    <div class="mt-4">
+                        <p class="mb-2 text-[9px] uppercase tracking-[1.5px] text-neutral-500">Available Styles</p>
+                        <div id="quickViewVariants" class="flex flex-wrap gap-2"></div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="mb-2 flex items-center justify-between">
+                            <p class="text-[9px] uppercase tracking-[1.5px] text-neutral-500">Select Size</p>
+                            <button id="openSizeGuide" class="text-[9px] underline">Size Guide</button>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button data-size="S"
+                                class="qv-size border border-neutral-300 px-3 py-2 text-[10px]">S</button>
+                            <button data-size="M"
+                                class="qv-size border border-neutral-300 px-3 py-2 text-[10px]">M</button>
+                            <button data-size="L"
+                                class="qv-size border border-neutral-300 px-3 py-2 text-[10px]">L</button>
+                            <button data-size="XL"
+                                class="qv-size border border-neutral-300 px-3 py-2 text-[10px]">XL</button>
+                            <button data-size="XXL"
+                                class="qv-size border border-neutral-300 px-3 py-2 text-[10px]">XXL</button>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="mb-2 text-[9px] uppercase tracking-[1.5px] text-neutral-500">Quantity</p>
+                        <div class="flex h-9 w-24 items-center justify-between border border-neutral-300 px-3">
+                            <button id="decreaseQuantity" aria-label="Decrease quantity">−</button>
+                            <span id="quickViewQuantity" class="text-xs">1</span>
+                            <button id="increaseQuantity" aria-label="Increase quantity">+</button>
+                        </div>
+                    </div>
+                    <button id="quickViewAddButton"
+                        class="mt-4 w-full border border-neutral-900 px-4 py-3 text-[10px] font-semibold tracking-[2px] transition hover:bg-neutral-900 hover:text-white">
+                        ADD TO CART
+                    </button>
+                    <div id="productAccordions" class="mt-5 divide-y divide-neutral-200 border-y border-neutral-200">
+                        <!-- DESCRIPTION -->
+                        <div class="accordion-item">
+                            <button type="button"
+                                class="accordion-trigger flex w-full items-center justify-between py-3 text-left text-[10px] font-medium uppercase tracking-[1.3px]"
+                                aria-expanded="false">
+                                DESCRIPTION
+                                <svg class="accordion-icon h-3 w-3 transition-transform duration-300"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-panel grid transition-[grid-template-rows,opacity] duration-300 ease-in-out"
+                                style="grid-template-rows:0fr;opacity:0">
+                                <div class="overflow-hidden">
+                                    <div class="pb-4 text-[10px] leading-6 text-neutral-600">
+                                        <p id="quickViewDescription"></p>
+                                        <p class="mt-2">Please check the selected product details before ordering.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SHIPPING -->
+                        <div class="accordion-item">
+                            <button type="button"
+                                class="accordion-trigger flex w-full items-center justify-between py-3 text-left text-[10px] font-medium uppercase tracking-[1.3px]"
+                                aria-expanded="false">
+                                SHIPPING INFORMATION
+                                <svg class="accordion-icon h-3 w-3 transition-transform duration-300"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-panel grid transition-[grid-template-rows,opacity] duration-300 ease-in-out"
+                                style="grid-template-rows:0fr;opacity:0">
+                                <div class="overflow-hidden">
+                                    <div class="pb-4 text-[10px] leading-6 text-neutral-600">
+                                        Shipping charges and estimated delivery times depend on your location. Check the
+                                        final details during checkout.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ASK A QUESTION -->
+                        <div class="accordion-item">
+                            <button type="button"
+                                class="accordion-trigger flex w-full items-center justify-between py-3 text-left text-[10px] font-medium uppercase tracking-[1.3px]"
+                                aria-expanded="false">
+                                ASK A QUESTION
+                                <svg class="accordion-icon h-3 w-3 transition-transform duration-300"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-panel grid transition-[grid-template-rows,opacity] duration-300 ease-in-out"
+                                style="grid-template-rows:0fr;opacity:0">
+                                <div class="overflow-hidden">
+                                    <form id="questionForm" class="space-y-3 pb-4">
+                                        <input id="qvQuestionName" type="text" placeholder="Your name" required
+                                            class="w-full border border-neutral-200 px-3 py-2 text-xs outline-none">
+                                        <input id="qvQuestionEmail" type="email" placeholder="Your email" required
+                                            class="w-full border border-neutral-200 px-3 py-2 text-xs outline-none">
+                                        <textarea id="qvQuestionText" rows="3" placeholder="Your question" required
+                                            class="w-full border border-neutral-200 px-3 py-2 text-xs outline-none"></textarea>
+                                        <button type="submit"
+                                            class="border border-neutral-900 px-4 py-2 text-[9px] uppercase hover:bg-neutral-900 hover:text-white">
+                                            Submit Question
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- RETURNS -->
+                        <div class="accordion-item">
+                            <button type="button"
+                                class="accordion-trigger flex w-full items-center justify-between py-3 text-left text-[10px] font-medium uppercase tracking-[1.3px]"
+                                aria-expanded="false">
+                                RETURNS & EXCHANGES
+                                <svg class="accordion-icon h-3 w-3 transition-transform duration-300"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div class="accordion-panel grid transition-[grid-template-rows,opacity] duration-300 ease-in-out"
+                                style="grid-template-rows:0fr;opacity:0">
+                                <div class="overflow-hidden">
+                                    <div class="pb-4 text-[10px] leading-6 text-neutral-600">
+                                        Please refer to your store's return and exchange policy for eligibility and
+                                        applicable conditions.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIZE GUIDE POPUP -->
+    <div id="quickViewSizeGuide" class="fixed inset-0 z-[220] hidden items-center justify-center bg-black/50 p-4">
+        <div class="relative w-full max-w-sm bg-white p-5">
+            <button id="closeSizeGuide" class="absolute right-3 top-2 text-2xl">&times;</button>
+            <h3 class="mb-4 text-lg font-medium">Size Guide</h3>
+            <table class="w-full border-collapse text-center text-xs">
+                <thead>
+                    <tr class="bg-neutral-100">
+                        <th class="border p-2">Size</th>
+                        <th class="border p-2">Bust</th>
+                        <th class="border p-2">Waist</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border p-2">S</td>
+                        <td class="border p-2">34"</td>
+                        <td class="border p-2">28"</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2">M</td>
+                        <td class="border p-2">36"</td>
+                        <td class="border p-2">30"</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2">L</td>
+                        <td class="border p-2">38"</td>
+                        <td class="border p-2">32"</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2">XL</td>
+                        <td class="border p-2">40"</td>
+                        <td class="border p-2">34"</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2">XXL</td>
+                        <td class="border p-2">42"</td>
+                        <td class="border p-2">36"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div id="cartToast" role="status" aria-live="polite"
+        class="fixed bottom-5 left-1/2 z-[300] hidden -translate-x-1/2 bg-neutral-900 px-5 py-3 text-xs text-white shadow-lg">
+    </div>
+
+    <!-- JAVASCRIPT (latest collection) -->
+    <script>
+        const products = [
+            {
+                name: 'Purple Cotton Blend Embroidered Festive Kurta Set',
+                price: 1599.20,
+                original: 1999,
+                discount: 20,
+                description: 'A beautiful festive kurta set with an elegant design. Perfect for celebrations and special occasions.',
+                images: [
+                    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1583391733956-6c78276477e4?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85'
+                ]
+            },
+            {
+                name: 'Rust Cotton Blend Embroidered Festive Kurta Set',
+                price: 1599.20,
+                original: 1999,
+                discount: 20,
+                description: 'A stylish festive outfit suitable for family gatherings and special occasions.',
+                images: [
+                    'https://images.unsplash.com/photo-1583391733956-6c78276477e4?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85'
+                ]
+            },
+            {
+                name: 'Blue Cotton Printed Office Wear Kurti',
+                price: 639.20,
+                original: 799,
+                discount: 20,
+                description: 'A versatile printed kurti for office wear and everyday styling.',
+                images: [
+                    'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1583391733956-6c78276477e4?auto=format&fit=crop&w=800&q=85'
+                ]
+            },
+            {
+                name: 'Red Cotton Printed Everyday Kurti',
+                price: 639.20,
+                original: 799,
+                discount: 20,
+                description: 'A comfortable printed kurti designed for everyday wear.',
+                images: [
+                    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1583391733956-6c78276477e4?auto=format&fit=crop&w=800&q=85',
+                    'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85'
+                ]
+            }
+        ];
+
+        let selectedProduct = null;
+        let selectedSize = '';
+        let selectedQuantity = 1;
+        let selectedImageIndex = 0;
+        let cart = [];
+        let toastTimer;
+
+        function money(value) {
+            return '₹' + Number(value).toLocaleString('en-IN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('cartToast');
+            toast.textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.add('hidden'), 2500);
+        }
+
+        function renderProducts() {
+            document.getElementById('productGrid').innerHTML = products.map((product, index) => `
+                <article class="group min-w-0">
+                    <div class="relative overflow-hidden bg-neutral-100">
+                        <button type="button" data-quick-view="${index}" class="block w-full text-left">
+                            <img src="${product.images[0]}" alt="${product.name}" loading="lazy"
+                                class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                        </button>
+                        <span class="absolute right-0 top-0 bg-[#f45d79] px-2 py-1 text-[9px] font-medium text-white">
+                            FLAT ${product.discount}% OFF
+                        </span>
+                        <div class="absolute bottom-2 left-1 z-10 flex flex-col gap-0.5">
+                            ${['S', 'M', 'L', 'XL', 'XXL'].map(size => `
+                                <button type="button" data-card-size="${size}" aria-label="Select size ${size}"
+                                    class="card-size flex h-[18px] w-[27px] items-center justify-center rounded-[3px] border border-neutral-300 bg-white/95 text-[9px] leading-none text-neutral-700 transition hover:border-[#f45d79] hover:bg-[#f45d79] hover:text-white">
+                                    ${size}
+                                </button>
+                            `).join('')}
+                        </div>
+                        <button type="button" data-quick-view="${index}"
+                            class="absolute bottom-2 left-9 right-2 bg-[#f45d79] py-2 text-[10px] font-medium text-white transition hover:bg-[#e84caa] sm:text-xs">
+                            Quick view
+                        </button>
+                    </div>
+                    <h3 class="mt-2 min-h-[34px] text-[11px] leading-4 sm:text-[13px]">${product.name}</h3>
+                    <div class="mt-1 flex flex-wrap items-center gap-2 text-[10px] sm:text-xs">
+                        <span class="text-neutral-400 line-through">${money(product.original)}</span>
+                        <span class="font-medium">${money(product.price)}</span>
+                    </div>
+                    <p class="mt-1 text-[10px] font-medium text-[#f45d79]">Save ${product.discount}%</p>
+                    <button type="button" data-quick-view="${index}"
+                        class="mt-3 flex min-h-9 w-full items-center justify-center border border-[#e84caa] bg-white px-2 py-2 text-[10px] font-semibold transition hover:bg-[#e84caa] hover:text-white sm:text-xs">
+                        ADD TO CART
+                    </button>
+                </article>
+            `).join('');
+        }
+
+        renderProducts();
+
+        document.getElementById('productGrid').addEventListener('click', event => {
+            const sizeButton = event.target.closest('[data-card-size]');
+            if (!sizeButton) return;
+            event.preventDefault();
+            event.stopPropagation();
+            const card = sizeButton.closest('article');
+            card.querySelectorAll('[data-card-size]').forEach(button => {
+                button.classList.remove('!border-[#f45d79]', '!bg-[#f45d79]', '!text-white');
+            });
+            sizeButton.classList.add('!border-[#f45d79]', '!bg-[#f45d79]', '!text-white');
+            card.dataset.selectedSize = sizeButton.dataset.cardSize;
+        });
+
+        function openQuickView(index) {
+            selectedProduct = products[index];
+            selectedSize = '';
+            selectedQuantity = 1;
+            selectedImageIndex = 0;
+            document.getElementById('quickViewTitle').textContent = selectedProduct.name;
+            document.getElementById('quickViewOriginalPrice').textContent = money(selectedProduct.original);
+            document.getElementById('quickViewPrice').textContent = money(selectedProduct.price);
+            document.getElementById('quickViewSavings').textContent = 'SAVE ' + selectedProduct.discount + '%';
+            document.getElementById('quickViewDescription').textContent = selectedProduct.description;
+            document.getElementById('quickViewQuantity').textContent = '1';
+            document.querySelectorAll('.qv-size').forEach(button => {
+                button.classList.remove('border-pink-500', 'bg-pink-500', 'text-white');
+                button.classList.add('border-neutral-300');
+            });
+            document.querySelectorAll('.accordion-item').forEach(item => setAccordion(item, false));
+            renderGallery();
+            renderVariants();
+            const modal = document.getElementById('quickViewModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeQuickView() {
+            const modal = document.getElementById('quickViewModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.getElementById('closeQuickView').addEventListener('click', closeQuickView);
+        document.getElementById('productGrid').addEventListener('click', event => {
+            const button = event.target.closest('[data-quick-view]');
+            if (!button) return;
+            openQuickView(Number(button.dataset.quickView));
+        });
+
+        function renderGallery() {
+            const container = document.getElementById('quickViewThumbnails');
+            container.replaceChildren();
+            selectedProduct.images.forEach((src, index) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'overflow-hidden border-2 ' + (index === selectedImageIndex ? 'border-pink-500' : 'border-transparent');
+                const image = document.createElement('img');
+                image.src = src;
+                image.alt = 'Product image ' + (index + 1);
+                image.loading = 'lazy';
+                image.className = 'aspect-[3/4] w-full object-cover';
+                button.appendChild(image);
+                button.addEventListener('click', () => {
+                    selectedImageIndex = index;
+                    renderGallery();
+                    renderVariants();
+                });
+                container.appendChild(button);
+            });
+            document.getElementById('quickViewImage').src = selectedProduct.images[selectedImageIndex];
+        }
+
+        function renderVariants() {
+            const container = document.getElementById('quickViewVariants');
+            container.replaceChildren();
+            selectedProduct.images.forEach((src, index) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'w-10 overflow-hidden border-2 ' + (index === selectedImageIndex ? 'border-pink-500' : 'border-neutral-300');
+                const image = document.createElement('img');
+                image.src = src;
+                image.alt = 'Style ' + (index + 1);
+                image.className = 'aspect-[3/4] w-full object-cover';
+                button.appendChild(image);
+                button.addEventListener('click', () => {
+                    selectedImageIndex = index;
+                    renderGallery();
+                    renderVariants();
+                });
+                container.appendChild(button);
+            });
+        }
+
+        function setAccordion(item, open) {
+            const trigger = item.querySelector('.accordion-trigger');
+            const panel = item.querySelector('.accordion-panel');
+            const icon = item.querySelector('.accordion-icon');
+            trigger.setAttribute('aria-expanded', String(open));
+            panel.style.gridTemplateRows = open ? '1fr' : '0fr';
+            panel.style.opacity = open ? '1' : '0';
+            icon.classList.toggle('rotate-180', open);
+        }
+
+        document.querySelectorAll('.accordion-item').forEach(item => {
+            item.querySelector('.accordion-trigger').addEventListener('click', () => {
+                const isOpen = item.querySelector('.accordion-trigger').getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.accordion-item').forEach(other => setAccordion(other, false));
+                if (!isOpen) setAccordion(item, true);
+            });
+        });
+
+        document.querySelectorAll('.qv-size').forEach(button => {
+            button.addEventListener('click', () => {
+                selectedSize = button.dataset.size;
+                document.querySelectorAll('.qv-size').forEach(other => {
+                    other.classList.remove('border-pink-500', 'bg-pink-500', 'text-white');
+                    other.classList.add('border-neutral-300');
+                });
+                button.classList.remove('border-neutral-300');
+                button.classList.add('border-pink-500', 'bg-pink-500', 'text-white');
+            });
+        });
+
+        document.getElementById('decreaseQuantity').addEventListener('click', () => {
+            selectedQuantity = Math.max(1, selectedQuantity - 1);
+            document.getElementById('quickViewQuantity').textContent = selectedQuantity;
+        });
+
+        document.getElementById('increaseQuantity').addEventListener('click', () => {
+            selectedQuantity++;
+            document.getElementById('quickViewQuantity').textContent = selectedQuantity;
+        });
+
+        document.getElementById('quickViewAddButton').addEventListener('click', () => {
+            if (!selectedProduct) return;
+            if (!selectedSize) {
+                showToast('Please select a size first');
+                return;
+            }
+            const existing = cart.find(item => item.name === selectedProduct.name && item.size === selectedSize);
+            if (existing) {
+                existing.quantity += selectedQuantity;
+            } else {
+                cart.push({
+                    name: selectedProduct.name,
+                    price: selectedProduct.price,
+                    size: selectedSize,
+                    quantity: selectedQuantity
+                });
+            }
+            console.log('Demo cart:', cart);
+            showToast('Product added to cart');
+            closeQuickView();
+        });
+
+        const sizeGuide = document.getElementById('quickViewSizeGuide');
+        document.getElementById('openSizeGuide').addEventListener('click', () => {
+            sizeGuide.classList.remove('hidden');
+            sizeGuide.classList.add('flex');
+        });
+        function closeSizeGuide() {
+            sizeGuide.classList.add('hidden');
+            sizeGuide.classList.remove('flex');
+        }
+        document.getElementById('closeSizeGuide').addEventListener('click', closeSizeGuide);
+        sizeGuide.addEventListener('click', event => {
+            if (event.target === sizeGuide) closeSizeGuide();
+        });
+
+        document.getElementById('questionForm').addEventListener('submit', event => {
+            event.preventDefault();
+            showToast('Connect this form to your backend to submit');
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeQuickView();
+                closeSizeGuide();
+            }
+        });
+        document.getElementById('quickViewModal').addEventListener('click', event => {
+            if (event.target.id === 'quickViewModal') closeQuickView();
+        });
+    </script>
+
+    <!-- ================================================ -->
+    <!-- SIMPLE BANNER SLIDER — IMAGE ONLY, NO BG         -->
+    <!-- ================================================ -->
+    <section id="simpleBannerSection" class="sbs-section">
+        <div class="sbs-frame">
+            <div class="sbs-track" id="sbsTrack">
+                <div class="sbs-slide">
+                    <img src="https://divenaworld.com/cdn/shop/files/Karwachauth.jpg?v=1792492627&width=1920"
+                        alt="Banner 1" draggable="false">
+                </div>
+                <div class="sbs-slide">
+                    <img src="https://shinisha.in/cdn/shop/files/Shinisha_Web_Slider_-.jpg_1.jpg?v=1792669202&width=1920"
+                        alt="Banner 2" draggable="false">
+                </div>
+                <div class="sbs-slide">
+                    <img src="https://shinisha.in/cdn/shop/files/231026-Shinisha-banner.png?v=1792759792&width=1920"
+                        alt="Banner 3" draggable="false">
+                </div>
+            </div>
+
+            <button class="sbs-arrow sbs-prev" id="sbsPrev" aria-label="Previous">&#10094;</button>
+            <button class="sbs-arrow sbs-next" id="sbsNext" aria-label="Next">&#10095;</button>
+
+            <div class="sbs-dots" id="sbsDots"></div>
+        </div>
+    </section>
+
+    <style>
+        /* ============ SECTION ============ */
+        .sbs-section {
+            padding: 20px 16px;
+            background: #ffffff;
+        }
+
+        /* ============ FRAME ============ */
+        .sbs-frame {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        /* ============ TRACK ============ */
+        .sbs-track {
+            display: flex;
+            width: 100%;
+            transition: transform .7s cubic-bezier(.22, .61, .36, 1);
+            will-change: transform;
+        }
+
+        /* ============ SLIDE ============ */
+        .sbs-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            aspect-ratio: 16 / 5;
+            overflow: hidden;
+        }
+
+        .sbs-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* ============ ARROWS ============ */
+        .sbs-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #dddddd;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #333333;
+            font-size: 14px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .sbs-arrow:hover {
+            background: #84366f;
+            color: #ffffff;
+            border-color: #84366f;
+        }
+
+        .sbs-prev {
+            left: 12px;
+        }
+
+        .sbs-next {
+            right: 12px;
+        }
+
+        /* ============ DOTS ============ */
+        .sbs-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 8px;
+        }
+
+        .sbs-dot {
+            width: 9px;
+            height: 9px;
+            padding: 0;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .30);
+            cursor: pointer;
+            transition: background .25s, transform .25s;
+        }
+
+        .sbs-dot.is-active {
+            background: #84366f;
+            border-color: #84366f;
+            transform: scale(1.15);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 900px) {
+            .sbs-section {
+                padding: 14px 10px;
+            }
+
+            .sbs-slide {
+                aspect-ratio: 2 / 1;
+            }
+
+            .sbs-arrow {
+                width: 34px;
+                height: 34px;
+                font-size: 12px;
+            }
+
+            .sbs-prev {
+                left: 8px;
+            }
+
+            .sbs-next {
+                right: 8px;
+            }
+
+            .sbs-dots {
+                bottom: 10px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .sbs-slide {
+                aspect-ratio: 1 / 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sbs-track {
+                transition: none;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            const track = document.getElementById('sbsTrack');
+            const slides = Array.from(track.children);
+            const prevBtn = document.getElementById('sbsPrev');
+            const nextBtn = document.getElementById('sbsNext');
+            const dotsWrap = document.getElementById('sbsDots');
+
+            const AUTOPLAY_MS = 5500;
+            let index = 0;
+            let timer = null;
+
+            /* BUILD DOTS */
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'sbs-dot';
+                dot.type = 'button';
+                dot.setAttribute('aria-label', 'Go to banner ' + (i + 1));
+                dot.addEventListener('click', () => {
+                    goTo(i);
+                    restartAutoplay();
+                });
+                dotsWrap.appendChild(dot);
+            });
+
+            const dots = Array.from(dotsWrap.children);
+
+            /* CORE */
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                dots.forEach((dot, d) => {
+                    dot.classList.toggle('is-active', d === index);
+                });
+            }
+
+            function next() { goTo(index + 1); }
+            function prev() { goTo(index - 1); }
+
+            /* AUTOPLAY */
+            function startAutoplay() {
+                stopAutoplay();
+                timer = setInterval(() => {
+                    if (!document.hidden) next();
+                }, AUTOPLAY_MS);
+            }
+
+            function stopAutoplay() {
+                if (timer) { clearInterval(timer); timer = null; }
+            }
+
+            function restartAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            /* CONTROLS */
+            nextBtn.addEventListener('click', () => { next(); restartAutoplay(); });
+            prevBtn.addEventListener('click', () => { prev(); restartAutoplay(); });
+
+            /* SWIPE */
+            let startX = 0, startY = 0, swiping = false;
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.changedTouches[0].screenX;
+                startY = e.changedTouches[0].screenY;
+                swiping = true;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                if (!swiping) return;
+                swiping = false;
+                const dx = e.changedTouches[0].screenX - startX;
+                const dy = e.changedTouches[0].screenY - startY;
+                if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+                    dx < 0 ? next() : prev();
+                    restartAutoplay();
+                }
+            }, { passive: true });
+
+            /* PAUSE WHEN TAB HIDDEN */
+            document.addEventListener('visibilitychange', () => {
+                document.hidden ? stopAutoplay() : startAutoplay();
+            });
+
+            /* INIT */
+            goTo(0);
+            startAutoplay();
+        })();
+    </script>
+
+
+    <!-- ==========================================
+     WEAR IT • REVIEW IT • LOVE IT
+     CUSTOMER PHOTO CAROUSEL
+========================================== -->
+
+    <section class="customer-love">
+
+        <!-- HEADING -->
+        <div class="customer-love-heading">
+            <h2>Wear it <span>✦</span> Review it <span>✦</span> Love it</h2>
+            <p>
+                Style isn't just about what you see in the mirror—it's about
+                how you feel the moment you put it on.
+            </p>
+        </div>
+
+        <!-- PHOTO CAROUSEL -->
+        <div class="customer-gallery" id="customerGallery">
+
+            <div class="customer-track" id="customerTrack">
+
+                <!-- Replace these image URLs with your customer photos -->
+
+                <div class="customer-photo photo-1">
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer fashion look">
+                </div>
+
+                <div class="customer-photo photo-2">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer outfit inspiration">
+                </div>
+
+                <div class="customer-photo photo-3">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer style portrait">
+                </div>
+
+                <div class="customer-photo photo-4">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer fashion portrait">
+                </div>
+
+                <div class="customer-photo photo-5">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer wearing a fashion outfit">
+                </div>
+
+                <div class="customer-photo photo-6">
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer fashion inspiration">
+                </div>
+
+                <div class="customer-photo photo-7">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer outfit">
+                </div>
+
+                <div class="customer-photo photo-8">
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=85"
+                        alt="Customer style">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- OPTIONAL BOTTOM LINE -->
+        <div class="customer-gallery-line"></div>
+
+    </section>
+
+
+    <style>
+        /* ==========================================
+   MAIN SECTION
+========================================== */
+
+        .customer-love {
+            --gallery-card-width: 200px;
+
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 30px 0 18px;
+            background-color: #fafafa;
+            color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+            isolation: isolate;
+        }
+
+        /* GEOMETRIC LINE BACKGROUND */
+
+        .customer-love::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.65;
+
+            background-image:
+                repeating-linear-gradient(35deg,
+                    transparent 0,
+                    transparent 44px,
+                    rgba(120, 120, 120, 0.22) 45px,
+                    transparent 46px,
+                    transparent 80px),
+                repeating-linear-gradient(125deg,
+                    transparent 0,
+                    transparent 52px,
+                    rgba(120, 120, 120, 0.18) 53px,
+                    transparent 54px,
+                    transparent 95px);
+        }
+
+        /* ==========================================
+   HEADING
+========================================== */
+
+        .customer-love-heading {
+            position: relative;
+            z-index: 1;
+            padding: 0 15px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+
+        .customer-love-heading h2 {
+            margin: 0 0 8px;
+            font-size: clamp(20px, 2.5vw, 30px);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: 0.5px;
+        }
+
+        .customer-love-heading h2 span {
+            display: inline-block;
+            margin: 0 3px;
+            font-size: 0.85em;
+        }
+
+        .customer-love-heading p {
+            margin: 0;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.6;
+            letter-spacing: 0.2px;
+        }
+
+        /* ==========================================
+   GALLERY VIEWPORT
+========================================== */
+
+        .customer-gallery {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0 24px;
+            cursor: grab;
+            touch-action: pan-y;
+        }
+
+        .customer-gallery:active {
+            cursor: grabbing;
+        }
+
+        /* ==========================================
+   HORIZONTAL TRACK
+========================================== */
+
+        .customer-track {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            width: max-content;
+            padding: 0 20px;
+            will-change: transform;
+            animation: customerMarquee 38s linear infinite;
+        }
+
+        .customer-gallery:hover .customer-track {
+            animation-play-state: paused;
+        }
+
+        /* ==========================================
+   PHOTO CARDS
+========================================== */
+
+        .customer-photo {
+            position: relative;
+            flex: 0 0 var(--gallery-card-width);
+            width: var(--gallery-card-width);
+            height: 278px;
+            padding: 9px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 13px;
+            box-shadow:
+                0 8px 22px rgba(0, 0, 0, 0.10),
+                0 2px 5px rgba(0, 0, 0, 0.04);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        /* SLIGHTLY TILTED PHOTO CARDS */
+
+        .photo-1 {
+            transform: rotate(-4deg);
+        }
+
+        .photo-2 {
+            transform: rotate(3deg);
+        }
+
+        .photo-3 {
+            transform: rotate(-3deg);
+        }
+
+        .photo-4 {
+            transform: rotate(4deg);
+        }
+
+        .photo-5 {
+            transform: rotate(-2deg);
+        }
+
+        .photo-6 {
+            transform: rotate(3deg);
+        }
+
+        .photo-7 {
+            transform: rotate(-4deg);
+        }
+
+        .photo-8 {
+            transform: rotate(2deg);
+        }
+
+        /* HOVER EFFECT */
+
+        .customer-photo:hover {
+            transform: rotate(0deg) translateY(-7px) scale(1.025);
+            box-shadow:
+                0 16px 32px rgba(0, 0, 0, 0.15),
+                0 3px 8px rgba(0, 0, 0, 0.05);
+            z-index: 2;
+        }
+
+        /* PHOTO INSIDE FRAME */
+
+        .customer-photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 7px;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* ==========================================
+   CONTINUOUS MARQUEE
+========================================== */
+
+        @keyframes customerMarquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* BOTTOM BORDER */
+
+        .customer-gallery-line {
+            height: 2px;
+            width: 100%;
+            background: rgba(100, 100, 100, 0.35);
+        }
+
+        /* ==========================================
+   TABLET
+========================================== */
+
+        @media (max-width: 900px) {
+            .customer-love {
+                --gallery-card-width: 175px;
+                padding-top: 28px;
+            }
+
+            .customer-love-heading {
+                margin-bottom: 25px;
+            }
+
+            .customer-photo {
+                height: 245px;
+            }
+
+            .customer-track {
+                gap: 20px;
+                animation-duration: 32s;
+            }
+        }
+
+        /* ==========================================
+   MOBILE
+========================================== */
+
+        @media (max-width: 600px) {
+            .customer-love {
+                --gallery-card-width: 145px;
+                padding: 25px 0 12px;
+            }
+
+            .customer-love-heading {
+                padding: 0 18px;
+                margin-bottom: 20px;
+            }
+
+            .customer-love-heading h2 {
+                font-size: 21px;
+                letter-spacing: 0;
+            }
+
+            .customer-love-heading h2 span {
+                margin: 0 1px;
+            }
+
+            .customer-love-heading p {
+                max-width: 340px;
+                margin: 0 auto;
+                font-size: 11px;
+            }
+
+            .customer-gallery {
+                padding: 8px 0 20px;
+            }
+
+            .customer-track {
+                gap: 15px;
+                padding: 0 14px;
+                animation-duration: 28s;
+            }
+
+            .customer-photo {
+                height: 205px;
+                padding: 7px;
+                border-radius: 10px;
+            }
+
+            .customer-photo img {
+                border-radius: 5px;
+            }
+        }
+
+        /* REDUCED MOTION ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+            .customer-track {
+                animation: none;
+            }
+
+            .customer-photo {
+                transition: none;
+            }
+        }
+    </style>
+
+
+    <script>
+        (function () {
+            const gallery = document.getElementById("customerGallery");
+            const track = document.getElementById("customerTrack");
+
+            if (!gallery || !track) return;
+
+            /*
+              Duplicate the photo cards to create a seamless
+              continuous horizontal marquee.
+            */
+
+            if (!track.dataset.duplicated) {
+                track.innerHTML += track.innerHTML;
+                track.dataset.duplicated = "true";
+            }
+
+            /*
+              Pause the animation while the user touches
+              or drags the gallery.
+            */
+
+            let startX = 0;
+            let isDragging = false;
+
+            gallery.addEventListener("pointerdown", function (event) {
+                startX = event.clientX;
+                isDragging = true;
+                track.style.animationPlayState = "paused";
+            });
+
+            gallery.addEventListener("pointerup", function () {
+                isDragging = false;
+
+                if (!gallery.matches(":hover")) {
+                    track.style.animationPlayState = "running";
+                }
+            });
+
+            gallery.addEventListener("pointercancel", function () {
+                isDragging = false;
+                track.style.animationPlayState = "running";
+            });
+
+            gallery.addEventListener("pointermove", function (event) {
+                if (!isDragging) return;
+
+                const difference = Math.abs(event.clientX - startX);
+
+                if (difference > 8) {
+                    track.style.animationPlayState = "paused";
+                }
+            });
+
+            gallery.addEventListener("pointerleave", function () {
+                isDragging = false;
+                track.style.animationPlayState = "running";
+            });
+        })();
+    </script>
+
+
+    <!-- ==========================================
+     SHINISHA — PREMIUM ABOUT US SECTION
+========================================== -->
+
+    <section class="about-shinisha relative overflow-hidden bg-[#faf8f5] py-16 sm:py-24 lg:py-28">
+
+        <!-- DECORATIVE BACKGROUND -->
+        <div class="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-[#a13d91]/10 blur-3xl"></div>
+        <div class="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-[#d9b6ce]/30 blur-3xl">
+        </div>
+
+        <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-12">
+
+            <!-- LEFT: EDITORIAL IMAGE COLLAGE -->
+            <div class="relative mx-auto w-full max-w-lg">
+
+                <!-- MAIN IMAGE -->
+                <div
+                    class="relative z-10 w-[78%] overflow-hidden rounded-t-[48%] rounded-b-2xl border-[7px] border-white shadow-2xl sm:border-[10px]">
+
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85"
+                        alt="Elegant fashion collection" class="about-main-image aspect-[3/4] w-full object-cover"
+                        loading="lazy">
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+
+                    <div class="absolute bottom-5 left-5 text-white sm:bottom-8 sm:left-8">
+                        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] sm:text-xs">
+                            The Art of Dressing
+                        </p>
+                        <p class="mt-1 font-serif text-2xl italic sm:text-3xl">
+                            Made for you.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- FLOATING SECOND IMAGE -->
+                <div
+                    class="absolute -right-1 top-[12%] z-20 w-[43%] rotate-6 overflow-hidden rounded-2xl border-[5px] border-white shadow-xl transition duration-500 hover:rotate-0 sm:-right-2 sm:border-[7px]">
+
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=85"
+                        alt="Contemporary fashion inspiration" class="aspect-[4/5] w-full object-cover" loading="lazy">
+
+                </div>
+
+                <!-- GLASS MESSAGE -->
+                <div
+                    class="absolute -bottom-5 right-0 z-30 w-[65%] rounded-2xl border border-white/80 bg-white/75 p-4 shadow-xl backdrop-blur-xl sm:-bottom-7 sm:p-5">
+
+                    <div class="flex items-center gap-3">
+
+                        <div
+                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#a13d91] text-xl text-white">
+                            ✦
+                        </div>
+
+                        <div>
+                            <p class="font-serif text-lg text-[#84366f] sm:text-xl">
+                                Your Style.
+                            </p>
+                            <p class="text-xs text-neutral-600">
+                                Your Story. Your Confidence.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- DECORATIVE OUTLINE -->
+                <div
+                    class="absolute -bottom-9 left-[10%] h-32 w-32 rounded-full border border-[#a13d91]/30 sm:h-40 sm:w-40">
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT: ABOUT CONTENT -->
+            <div class="pt-5 lg:pt-0">
+
+                <!-- EYEBROW -->
+                <div class="mb-5 flex items-center gap-3">
+                    <span class="h-px w-10 bg-[#a13d91]"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#84366f] sm:text-xs">
+                        Welcome to SHINISHA
+                    </span>
+                </div>
+
+                <!-- HEADING -->
+                <h2
+                    class="max-w-xl font-serif text-4xl font-medium leading-[1.15] tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+
+                    Fashion that
+                    <span class="italic text-[#a13d91]">feels like you.</span>
+
+                </h2>
+
+                <!-- DESCRIPTION -->
+                <p class="mt-6 max-w-xl text-sm leading-7 text-neutral-600 sm:text-base sm:leading-8">
+                    At SHINISHA, we believe fashion is more than what you wear.
+                    It is how you express yourself, celebrate your individuality,
+                    and feel confident in every moment.
+                </p>
+
+                <p class="mt-4 max-w-xl text-sm leading-7 text-neutral-600 sm:text-base sm:leading-8">
+                    From everyday essentials to outfits for special occasions,
+                    explore styles that bring together elegance, comfort, and
+                    a touch of something uniquely yours.
+                </p>
+
+
+                <!-- VALUES -->
+                <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+                    <!-- VALUE 1 -->
+                    <div
+                        class="group rounded-xl border border-neutral-200/80 bg-white/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-[#a13d91]/40 hover:shadow-lg">
+
+                        <div
+                            class="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#a13d91]/10 text-lg text-[#a13d91] transition group-hover:bg-[#a13d91] group-hover:text-white">
+                            ✧
+                        </div>
+
+                        <h3 class="text-sm font-bold text-neutral-900">
+                            Style with Purpose
+                        </h3>
+
+                        <p class="mt-2 text-xs leading-6 text-neutral-600">
+                            Discover thoughtfully presented styles for your everyday wardrobe.
+                        </p>
+
+                    </div>
+
+
+                    <!-- VALUE 2 -->
+                    <div
+                        class="group rounded-xl border border-neutral-200/80 bg-white/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-[#a13d91]/40 hover:shadow-lg">
+
+                        <div
+                            class="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#a13d91]/10 text-lg text-[#a13d91] transition group-hover:bg-[#a13d91] group-hover:text-white">
+                            ♡
+                        </div>
+
+                        <h3 class="text-sm font-bold text-neutral-900">
+                            Made to Feel Good
+                        </h3>
+
+                        <p class="mt-2 text-xs leading-6 text-neutral-600">
+                            Find looks that help you feel comfortable, expressive, and confident.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CTA -->
+                <div class="mt-8 flex flex-wrap items-center gap-5">
+
+                    <a href="#new-arrivals"
+                        class="group inline-flex items-center gap-4 rounded-full bg-[#84366f] px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white transition hover:bg-neutral-900 sm:px-8">
+
+                        Discover Our Collection
+
+                        <span class="transition-transform duration-300 group-hover:translate-x-1">
+                            →
+                        </span>
+
+                    </a>
+
+                    <span class="text-xs italic text-neutral-500">
+                        Wear what makes you feel beautiful.
+                    </span>
+
+                </div>
+
+
+                <!-- BOTTOM DECORATIVE TEXT -->
+                <div class="mt-10 border-t border-neutral-200 pt-5">
+                    <p class="font-serif text-lg italic text-neutral-400 sm:text-xl">
+                        “Your style is your signature.”
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <style>
+        /* ==========================================
+   ABOUT SECTION ANIMATIONS
+========================================== */
+
+        .about-shinisha .about-main-image {
+            animation: shinishaImageReveal 1s ease both;
+        }
+
+        @keyframes shinishaImageReveal {
+            from {
+                opacity: 0;
+                transform: scale(1.04);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* SUBTLE FLOATING GLASS CARD */
+
+        @media (prefers-reduced-motion: no-preference) {
+            .about-shinisha .absolute.z-30 {
+                animation: shinishaFloat 4s ease-in-out infinite;
+            }
+
+            @keyframes shinishaFloat {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-6px);
+                }
+            }
+        }
+
+        /* MOBILE SPACING */
+
+        @media (max-width: 640px) {
+            .about-shinisha {
+                overflow: hidden;
+            }
+        }
+
+        /* ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .about-shinisha *,
+            .about-shinisha *::before,
+            .about-shinisha *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+
+
+
+    <!-- ==========================================
+     SHINISHA FASHION — PREMIUM FOOTER
+========================================== -->
+
+    <footer class="relative overflow-hidden bg-[#171318] text-white">
+
+        <!-- TOP NEWSLETTER SECTION -->
+        <div class="border-b border-white/10">
+            <div class="mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:px-8 md:grid-cols-2 md:py-16 lg:px-12">
+
+                <div>
+                    <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#d7a4c8]">
+                        A Little Love in Your Inbox
+                    </p>
+
+                    <h2 class="max-w-lg font-serif text-3xl leading-tight sm:text-4xl">
+                        Your next favourite look starts here.
+                    </h2>
+
+                    <p class="mt-3 max-w-md text-sm leading-6 text-white/60">
+                        Sign up for new arrivals, fresh style inspiration, and special offers.
+                    </p>
+                </div>
+
+                <form id="footerNewsletter" class="flex w-full flex-col gap-3 sm:flex-row md:justify-end">
+
+                    <label for="footerEmail" class="sr-only">Email address</label>
+
+                    <input id="footerEmail" type="email" placeholder="Enter your email address" required
+                        class="min-w-0 flex-1 rounded-full border border-white/15 bg-white/5 px-5 py-4 text-sm text-white outline-none transition placeholder:text-white/40 focus:border-[#d7a4c8] sm:max-w-sm">
+
+                    <button type="submit"
+                        class="rounded-full bg-[#d7a4c8] px-7 py-4 text-xs font-bold uppercase tracking-widest text-[#251522] transition hover:bg-white">
+                        Subscribe →
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+
+        <!-- MAIN FOOTER CONTENT -->
+        <div class="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
+
+            <div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-10">
+
+                <!-- BRAND -->
+                <div class="col-span-2 lg:col-span-2">
+
+                    <a href="/" class="inline-block">
+                        <span class="font-serif text-3xl font-bold tracking-[0.12em]">
+                            SHINISHA<span class="text-[#d7a4c8]">.</span>
+                        </span>
+                    </a>
+
+                    <p class="mt-5 max-w-sm text-sm leading-7 text-white/60">
+                        Discover styles that express your individuality.
+                        From everyday essentials to special occasions,
+                        find pieces that make you feel confident and beautiful.
+                    </p>
+
+                    <!-- SOCIAL LINKS -->
+                    <div class="mt-6 flex items-center gap-3">
+
+                        <a href="https://www.instagram.com/" aria-label="Instagram"
+                            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-sm transition hover:border-[#d7a4c8] hover:bg-[#d7a4c8] hover:text-[#251522]">
+                            IG
+                        </a>
+
+                        <a href="https://www.facebook.com/" aria-label="Facebook"
+                            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-sm font-bold transition hover:border-[#d7a4c8] hover:bg-[#d7a4c8] hover:text-[#251522]">
+                            f
+                        </a>
+
+                        <a href="https://www.youtube.com/" aria-label="YouTube"
+                            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-xs font-bold transition hover:border-[#d7a4c8] hover:bg-[#d7a4c8] hover:text-[#251522]">
+                            ▶
+                        </a>
+
+                        <a href="https://www.pinterest.com/" aria-label="Pinterest"
+                            class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-sm font-bold transition hover:border-[#d7a4c8] hover:bg-[#d7a4c8] hover:text-[#251522]">
+                            P
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHOP LINKS -->
+                <div>
+                    <h3 class="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#d7a4c8]">
+                        Explore
+                    </h3>
+
+                    <ul class="space-y-3 text-sm text-white/65">
+                        <li><a href="/" class="transition hover:text-white">Home</a></li>
+                        <li><a href="/shop" class="transition hover:text-white">Shop All</a></li>
+                        <li><a href="/collections/new-arrivals" class="transition hover:text-white">New Arrivals</a>
+                        </li>
+                        <li><a href="/collections/best-sellers" class="transition hover:text-white">Best Sellers</a>
+                        </li>
+                        <li><a href="/about-us" class="transition hover:text-white">About Us</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- CUSTOMER CARE -->
+                <div>
+                    <h3 class="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#d7a4c8]">
+                        Customer Care
+                    </h3>
+
+                    <ul class="space-y-3 text-sm text-white/65">
+                        <li><a href="/contact" class="transition hover:text-white">Contact Us</a></li>
+                        <li><a href="/track-order" class="transition hover:text-white">Track Your Order</a></li>
+                        <li><a href="/shipping-policy" class="transition hover:text-white">Shipping Policy</a></li>
+                        <li><a href="/return-policy" class="transition hover:text-white">Returns & Exchanges</a></li>
+                        <li><a href="/faq" class="transition hover:text-white">FAQs</a></li>
+                    </ul>
+                </div>
+
+
+                <!-- POLICIES -->
+                <div>
+                    <h3 class="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#d7a4c8]">
+                        Information
+                    </h3>
+
+                    <ul class="space-y-3 text-sm text-white/65">
+                        <li><a href="/privacy-policy" class="transition hover:text-white">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions" class="transition hover:text-white">Terms & Conditions</a>
+                        </li>
+                        <li><a href="/refund-policy" class="transition hover:text-white">Refund Policy</a></li>
+                        <li><a href="/cancellation-policy" class="transition hover:text-white">Cancellation Policy</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <!-- TRUST STRIP -->
+            <div class="mt-12 grid grid-cols-1 gap-4 border-y border-white/10 py-6 sm:grid-cols-3">
+
+                <div class="flex items-center gap-3">
+                    <span
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-lg text-[#d7a4c8]">
+                        ♡
+                    </span>
+                    <div>
+                        <p class="text-xs font-semibold">Style You'll Love</p>
+                        <p class="mt-1 text-[11px] text-white/45">Find your own signature look</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <span
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-lg text-[#d7a4c8]">
+                        ↗
+                    </span>
+                    <div>
+                        <p class="text-xs font-semibold">Order Assistance</p>
+                        <p class="mt-1 text-[11px] text-white/45">We're here to help</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <span
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-lg text-[#d7a4c8]">
+                        ✦
+                    </span>
+                    <div>
+                        <p class="text-xs font-semibold">Fresh Fashion Finds</p>
+                        <p class="mt-1 text-[11px] text-white/45">Discover your next favourite</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM BAR -->
+            <div
+                class="flex flex-col gap-5 pt-7 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+
+                <p class="text-xs leading-6 text-white/45">
+                    © <span id="footerYear"></span> SHINISHA. All rights reserved.
+                </p>
+
+                <!-- PAYMENT METHODS: DISPLAY ONLY -->
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <span class="mr-1 text-[10px] uppercase tracking-wider text-white/40">
+                        Payment options
+                    </span>
+
+                    <span
+                        class="rounded border border-white/15 px-2 py-1 text-[10px] font-bold text-white/70">UPI</span>
+                    <span
+                        class="rounded border border-white/15 px-2 py-1 text-[10px] font-bold text-white/70">VISA</span>
+                    <span
+                        class="rounded border border-white/15 px-2 py-1 text-[10px] font-bold text-white/70">RuPay</span>
+                    <span
+                        class="rounded border border-white/15 px-2 py-1 text-[10px] font-bold text-white/70">COD*</span>
+                </div>
+
+                <a href="#top" class="text-xs text-white/60 transition hover:text-[#d7a4c8]">
+                    Back to top ↑
+                </a>
+
+            </div>
+
+            <p class="mt-3 text-center text-[10px] text-white/30">
+                *Cash on delivery is available only if offered by your store.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+        /* AUTOMATIC COPYRIGHT YEAR */
+        document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+        /* DEMO NEWSLETTER FORM */
+        document.getElementById("footerNewsletter").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("footerEmail").value.trim();
+
+            if (!email) return;
+
+            alert("Thank you for your interest! Connect this form to your newsletter backend to save subscriptions.");
+
+            this.reset();
+        });
+    </script>
+
+
+</body>
+
+</html>
