@@ -236,3 +236,52 @@
             this.reset();
         });
     </script>
+
+    
+
+<script>
+    $(document).on("click", ".searchBtn", function(e) {
+        e.preventDefault();
+        const searchInput = $(".searchInput");
+        const searchCategory = $(".searchCategory");
+        let url = '';
+        if (typeof searchCategory.val() === 'undefined') {
+            url = '<?= $storeUrl ?>search/' + encodeURIComponent(searchInput.val());
+        } else {
+            url = '<?= $storeUrl ?>search/' + encodeURIComponent(searchInput.val()) + "?category=" + searchCategory.val();
+        }
+        if (searchInput.val() !== "") window.location.href = url;
+    });
+</script>
+
+
+<script src="<?= APP_URL ?>themes/theme13/js/main.js"></script>
+
+
+<!--This File For my Customise Js For my Theme 13-->
+<script src="<?= APP_URL ?>themes/theme13/js/script.js"></script>
+
+<!--This File For Cart Functions For Theme 9-->
+<script src="<?= APP_URL ?>themes/theme9/ajax/common-cart.js"></script>
+
+<!--This File For Track Cart & Checkout Theme 9-->
+<script src="<?= APP_URL ?>shop/javascripts/utm-tracker.js"></script>
+
+<!--This File For Wishlist-->
+<script src="<?= APP_URL ?>themes/theme9/ajax/common-wishlist.js"></script>
+
+<!--This File For Wishlist-->
+<script src="<?= APP_URL ?>assets/js/global.js"></script>
+<script src="<?= APP_URL ?>assets/js/theme3/app.js"></script>
+
+
+
+
+<!--This File For Checkout -->
+<script src="<?= APP_URL ?>assets/js/theme3/checkout.js"></script>
+<script src="<?= APP_URL ?>shop/javascripts/checkout.js"></script>
+
+
+<!-- Datatable JS -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="<?= APP_URL ?>shop/javascripts/orders.js"></script>
