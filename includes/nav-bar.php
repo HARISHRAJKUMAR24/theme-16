@@ -51,16 +51,13 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
 <!-- ================================================== -->
 <!-- FESTIVE ANNOUNCEMENT                                -->
 <!-- ================================================== -->
+<?php $minOrder = getSettings("minimum_order_amount"); ?>
+<?php if ($minOrder): ?>
 <div class="flex h-[26px] items-center justify-center px-2 text-center text-[9px] font-bold tracking-[.6px] text-white sm:h-[32px] sm:text-[11px] sm:tracking-[1.5px]"
     style="background: <?= htmlspecialchars($headerPrimary) ?>;">
-    <?php if (getSettings("minimum_order_amount")): ?>
-        FESTIVE SALE IS LIVE &nbsp;|&nbsp; MINIMUM ORDER
-        <?= currencyToSymbol($storeCurrency) . ' ' . getSettings("minimum_order_amount") ?>
-    <?php else: ?>
-        FESTIVE SALE IS LIVE &nbsp;|&nbsp; FLAT 20% OFF + EXTRA 10% OFF ON PREPAID ORDERS.
-    <?php endif; ?>
+    MINIMUM ORDER <?= currencyToSymbol($storeCurrency) . ' ' . $minOrder ?>
 </div>
-
+<?php endif; ?>
 
 <!-- ================================================== -->
 <!-- MAIN HEADER                                         -->
@@ -212,8 +209,8 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
         </div>
     </div>
 
-    <a href="<?= $storeUrl ?>best-seller"
-        class="text-[13px] font-semibold uppercase tracking-[.8px] transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">BEST SELLER</a>
+    <a href="<?= $storeUrl ?>shop-all"
+        class="text-[13px] font-semibold uppercase tracking-[.8px] transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">SHOP ALL</a>
     <a href="<?= $storeUrl ?>reviews"
         class="text-[13px] font-semibold uppercase tracking-[.8px] transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">REVIEWS</a>
     <a href="<?= $storeUrl ?>track-order"
