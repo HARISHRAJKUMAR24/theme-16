@@ -60,7 +60,7 @@ if (!function_exists('getProductHtml')) {
             $cardSizes = array_slice($cardSizes, 0, 5);
         }
 
-        // ---------- Cart state ----------
+        // ---------- Cart state (same tracking logic as product page) ----------
         $cartVariants = [];
         if (!empty($cookie_id)) {
             $cq = $db->prepare("SELECT other, advanced_variant FROM customer_cart WHERE customer_id=? AND product_id=?");
@@ -176,6 +176,7 @@ if (!function_exists('getProductHtml')) {
         $html .= ' data-primary="' . htmlspecialchars($primary_color) . '"';
         $html .= ' data-hover="' . htmlspecialchars($hover_color) . '"';
         $html .= ' data-variants="' . $variantJson . '"';
+        $html .= ' data-in-cart="' . (in_array('main', $cartVariants) ? '1' : '0') . '"';
         $html .= ' data-also-bought="' . $alsoBoughtJson . '">';
 
         // ---------- IMAGE WRAPPER ----------
@@ -236,7 +237,8 @@ if (!function_exists('getProductHtml')) {
         } else if ($totalStocks <= 0 && !$isUnlimited) {
             $html .= '<button type="button" class="t9-card-cta is-disabled" disabled>SOLD OUT</button>';
         } else {
-            $html .= '<button type="button" class="t9-card-cta t9-direct-add" data-id="' . $id . '">ADD TO CART</button>';
+            $mainAlreadyInCart = in_array('main', $cartVariants);
+            $html .= '<button type="button" class="t9-card-cta t9-direct-add' . ($mainAlreadyInCart ? ' is-in-cart' : '') . '" data-id="' . $id . '" ' . ($mainAlreadyInCart ? 'disabled' : '') . '>' . ($mainAlreadyInCart ? 'ALREADY IN CART' : 'ADD TO CART') . '</button>';
         }
 
         $html .= '</article>';
@@ -641,6 +643,14 @@ if (!function_exists('getProductHtml')) {
         border-color: #e5e5e5;
         color: #9ca3af;
         cursor: not-allowed;
+    }
+
+    .t9-card-cta.is-in-cart {
+        background: #f5f5f5;
+        border-color: #d4d4d4;
+        color: #525252;
+        cursor: not-allowed;
+        opacity: 1;
     }
 
     /* ============================================================ */
@@ -1258,8 +1268,9 @@ if (!function_exists('getProductHtml')) {
 
         const CURRENCY = <?= json_encode(currencyToSymbol($storeCurrency)) ?>;
         const STORE_URL = <?= json_encode($storeUrl) ?>;
-        const APP_URL = <?= json_encode(rtrim(APP_URL, '/') . '/') ?>;
-        const ADD_URL = APP_URL + 'shop/ajax/add-to-cart.php';
+        // Use the same relative endpoint as the working reference component.
+        // This keeps requests on the current store/custom domain.
+        const ADD_URL = 'shop/ajax/add-to-cart.php';
 
         const DB_PRIMARY = <?= json_encode($primary_color) ?>;
         const DB_HOVER = <?= json_encode($hover_color) ?>;
@@ -1433,6 +1444,7 @@ if (!function_exists('getProductHtml')) {
             elSizes.innerHTML = '';
             elBasics.innerHTML = '';
             elAddBtn.disabled = true;
+            elAddBtn.classList.remove('is-in-cart');
             elAddBtn.textContent = 'SELECT OPTIONS';
 
             if (p.hasAdvanced && state.variants.advanced.length) {
@@ -1448,11 +1460,9 @@ if (!function_exists('getProductHtml')) {
                     image: p.image,
                     stock: 999,
                     unlimited: 1,
-                    inCart: 0,
+                    inCart: card.dataset.inCart === '1',
                 };
-                elAddBtn.disabled = false;
-                elAddBtn.textContent = 'ADD TO CART';
-                elStock.innerHTML = '<span style="color:#16a34a">In Stock</span>';
+                updatePriceAndStock();
             }
 
             modal.classList.add('is-open');
@@ -1599,7 +1609,7 @@ if (!function_exists('getProductHtml')) {
 
             if (v.inCart) {
                 elAddBtn.disabled = true;
-                elAddBtn.textContent = 'ALREADY IN BAG';
+                elAddBtn.textContent = 'ALREADY IN CART';
                 elAddBtn.classList.add('is-in-cart'); // Add a new class
             } else {
                 elAddBtn.classList.remove('is-in-cart'); // Remove it if not in cart
@@ -1642,12 +1652,24 @@ if (!function_exists('getProductHtml')) {
                     success: raw => {
                         let res;
                         try {
-                            res = JSON.parse(raw);
+                            // Some cart endpoints return JSON with extra whitespace/BOM.
+                            const cleaned = String(raw || '').replace(/^\\uFEFF/, '').trim();
+                            res = JSON.parse(cleaned);
                         } catch (e) {
-                            res = {
-                                success: false,
-                                message: String(raw || 'Invalid response')
-                            };
+                            // The endpoint may return a plain-text duplicate message instead of JSON.
+                            const rawMessage = String(raw || '').replace(/<[^>]*>/g, ' ').replace(/\\s+/g, ' ').trim();
+                            if (/already\\s+(in|added to)\\s+(the\\s+)?(cart|bag)|already exists|duplicate|product exists/i.test(rawMessage)) {
+                                res = { success: false, alreadyInCart: true, message: 'Already in cart' };
+                            } else {
+                                res = { success: false, message: rawMessage || 'Invalid response' };
+                            }
+                        }
+                        // Treat duplicate/already-in-cart responses as a normal cart state.
+                        const msg = String(res.message || '').toLowerCase();
+                        if (res.alreadyInCart === true || res.duplicate === true ||
+                            /already|duplicate|already exists|in cart|in bag/.test(msg)) {
+                            res.alreadyInCart = true;
+                            res.message = 'Already in cart';
                         }
                         onOk(res);
                     },
@@ -1676,12 +1698,21 @@ if (!function_exists('getProductHtml')) {
                 .then(raw => {
                     let res;
                     try {
-                        res = JSON.parse(raw);
+                        const cleaned = String(raw || '').replace(/^\\uFEFF/, '').trim();
+                        res = JSON.parse(cleaned);
                     } catch (e) {
-                        res = {
-                            success: false,
-                            message: String(raw || 'Invalid response')
-                        };
+                        const rawMessage = String(raw || '').replace(/<[^>]*>/g, ' ').replace(/\\s+/g, ' ').trim();
+                        if (/already\\s+(in|added to)\\s+(the\\s+)?(cart|bag)|already exists|duplicate|product exists/i.test(rawMessage)) {
+                            res = { success: false, alreadyInCart: true, message: 'Already in cart' };
+                        } else {
+                            res = { success: false, message: rawMessage || 'Invalid response' };
+                        }
+                    }
+                    const msg = String(res.message || '').toLowerCase();
+                    if (res.alreadyInCart === true || res.duplicate === true ||
+                        /already|duplicate|already exists|in cart|in bag/.test(msg)) {
+                        res.alreadyInCart = true;
+                        res.message = 'Already in cart';
                     }
                     onOk(res);
                 })
@@ -1712,7 +1743,9 @@ if (!function_exists('getProductHtml')) {
             sendAddToCart(payload, res => {
                 if (res.success || (res.message && /already|duplicate|exist/i.test(res.message))) {
                     toast(res.message || 'Added to bag!', false);
-                    elAddBtn.textContent = 'ALREADY IN BAG';
+                    elAddBtn.textContent = 'ALREADY IN CART';
+                    elAddBtn.disabled = true;
+                    elAddBtn.classList.add('is-in-cart');
                     if (typeof window.updateHeaderCounts === 'function') window.updateHeaderCounts();
                     if (typeof window.updateCartCounts === 'function') window.updateCartCounts();
                     setTimeout(closeModal, 900);
@@ -1749,7 +1782,8 @@ if (!function_exists('getProductHtml')) {
                     toast(res.message || 'Added to bag!', false);
                     if (typeof window.updateHeaderCounts === 'function') window.updateHeaderCounts();
                     if (typeof window.updateCartCounts === 'function') window.updateCartCounts();
-                    btn.textContent = 'ADDED TO BAG';
+                    btn.textContent = res.alreadyInCart ? 'ALREADY IN CART' : 'ADDED TO CART';
+                    btn.classList.add('is-in-cart');
                     btn.disabled = true;
                 } else {
                     toast(res.message || 'Could not add.', true);
@@ -1764,3 +1798,42 @@ if (!function_exists('getProductHtml')) {
         });
     })();
 </script>
+
+<script>
+    // THEME 9 — DELEGATED ACCORDION HANDLER
+    document.addEventListener('click', function(event) {
+        const trigger = event.target.closest(
+            '#t9QuickViewModal .t9-acc-trigger'
+        );
+
+        if (!trigger) return;
+
+        const panel = trigger.nextElementSibling;
+
+        if (!panel || !panel.classList.contains('t9-acc-panel')) {
+            return;
+        }
+
+        const accordion = trigger.closest('.t9-qv-acc');
+        if (!accordion) return;
+
+        const shouldOpen =
+            trigger.getAttribute('aria-expanded') !== 'true';
+
+        accordion.querySelectorAll('.t9-acc-trigger').forEach(function(button) {
+            button.setAttribute('aria-expanded', 'false');
+        });
+
+        trigger.setAttribute(
+            'aria-expanded',
+            shouldOpen ? 'true' : 'false'
+        );
+    });
+</script>
+
+<style>
+    .t9-acc-trigger[aria-expanded="true"]+.t9-acc-panel {
+        grid-template-rows: 1fr;
+        opacity: 1;
+    }
+</style>

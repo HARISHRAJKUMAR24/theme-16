@@ -155,6 +155,7 @@ if (!function_exists('getHangerProductHtml')) {
             'slug'            => $slug,
             'price'           => (float)$price,
             'mrp'             => (float)$mrp_price,
+            'inCart'          => in_array('main', $cartVariants, true) ? 1 : 0,
             'save'            => $savePercent,
             'description_b64' => base64_encode($description),
             'images'          => $images,
@@ -287,7 +288,7 @@ if (!function_exists('getHangerProductHtml')) {
                         </button>
                         <div class="t9-acc-panel">
                             <div class="t9-acc-inner">
-                                <div id="pzDesc" class="t9-rich-desc"></div>
+                                <div id="pzDesc" class="t9-rich-desc is-truncated"></div><button type="button" id="pzDescToggle" class="t9-desc-toggle" hidden>Read more</button>
                             </div>
                         </div>
                     </div>
@@ -655,20 +656,32 @@ if (!function_exists('getHangerProductHtml')) {
     .size-stack {
         position: absolute;
         z-index: 8;
-        left: 4px;
-        bottom: 4px;
+        left: 5px;
+        bottom: 5px;
         display: flex;
-        flex-direction: column;
-        gap: 2px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: 4px;
+        width: calc(100% - 10px);
+        max-width: calc(100% - 10px);
+        pointer-events: auto;
     }
 
     .size-option {
-        width: 26px;
+        box-sizing: border-box;
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: 54px;
         height: 18px;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0;
+        padding: 0 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         border: 1px solid #d4cfc5;
         border-radius: 3px;
         background: rgba(255, 255, 255, .94);
@@ -1213,6 +1226,23 @@ if (!function_exists('getHangerProductHtml')) {
         color: #525252;
     }
 
+    .t9-rich-desc.is-truncated {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .t9-desc-toggle {
+        margin-top: 8px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #84366f;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
     .t9-rich-desc p {
         margin: 0 0 10px;
     }
@@ -1418,9 +1448,18 @@ if (!function_exists('getHangerProductHtml')) {
             font-size: 5px;
         }
 
+        .size-stack {
+            left: 4px;
+            bottom: 4px;
+            gap: 3px;
+            width: calc(100% - 8px);
+            max-width: calc(100% - 8px);
+        }
+
         .size-option {
-            width: 23px;
+            max-width: 46px;
             height: 16px;
+            padding: 0 4px;
             font-size: 8.5px;
         }
     }
@@ -1645,6 +1684,7 @@ if (!function_exists('getHangerProductHtml')) {
         const elSave = document.getElementById('pzSave');
         const elStock = document.getElementById('pzStock');
         const elDesc = document.getElementById('pzDesc');
+        const elDescToggle = document.getElementById('pzDescToggle');
         const elColors = document.getElementById('pzColors');
         const elSizes = document.getElementById('pzSizes');
         const elBasics = document.getElementById('pzBasics');
@@ -1811,6 +1851,7 @@ if (!function_exists('getHangerProductHtml')) {
                 image: product.images[0] || '',
                 price: product.price,
                 mrp: product.mrp,
+                inCart: !!product.inCart,
                 descB64: product.description_b64 || '',
                 hasAdvanced: !!product.hasAdvanced,
                 hasBasic: !!product.hasBasic,
@@ -1841,6 +1882,14 @@ if (!function_exists('getHangerProductHtml')) {
 
             const descHTML = decodeB64(p.descB64).trim();
             elDesc.innerHTML = descHTML || '<p style="color:#999;">No description available.</p>';
+            elDesc.classList.add('is-truncated');
+            if (elDescToggle) {
+                elDescToggle.hidden = true;
+                elDescToggle.textContent = 'Read more';
+                requestAnimationFrame(() => {
+                    if (elDesc.scrollHeight > elDesc.clientHeight + 2) elDescToggle.hidden = false;
+                });
+            }
 
             elImg.src = p.image;
             elImg.alt = p.name;
@@ -1893,11 +1942,9 @@ if (!function_exists('getHangerProductHtml')) {
                     image: p.image,
                     stock: 999,
                     unlimited: 1,
-                    inCart: 0,
+                    inCart: !!p.inCart,
                 };
-                elAddBtn.disabled = false;
-                elAddBtn.textContent = 'ADD TO CART';
-                elStock.innerHTML = '<span style="color:#16a34a">In Stock</span>';
+                updatePriceAndStock();
             }
 
             modal.classList.add('is-open');
@@ -2096,6 +2143,7 @@ if (!function_exists('getHangerProductHtml')) {
                     type: 'POST',
                     data: payload,
                     dataType: 'text',
+                    xhrFields: { withCredentials: true },
                     success: raw => {
                         let res;
                         try {
@@ -2189,6 +2237,11 @@ if (!function_exists('getHangerProductHtml')) {
                 /* ignore */
             }
         }
+
+        elDescToggle?.addEventListener('click', () => {
+            const collapsed = elDesc.classList.toggle('is-truncated');
+            elDescToggle.textContent = collapsed ? 'Read more' : 'Read less';
+        });
 
         elAddBtn?.addEventListener('click', () => {
             if (!state.selectedVariant || elAddBtn.disabled) return;
