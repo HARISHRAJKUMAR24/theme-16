@@ -510,7 +510,6 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
 
         const SEARCH_SUGGESTIONS_URL = AJAX_BASE + 'shop/ajax/get-search-suggestions.php';
         const CART_COUNT_URL = AJAX_BASE + 'shop/ajax/get-product-count-and-price.php';
-        const WISHLIST_COUNT_URL = AJAX_BASE + 'shop/ajax/get-wishlist-count.php';
 
         const searchOverlay = document.getElementById('searchOverlay');
         const searchPanel = document.getElementById('searchPanel');
@@ -693,43 +692,30 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
             });
         }
 
-        // ============ HEADER COUNTS ============
+        // ============ CART COUNT ONLY ============
+        // Initial count is rendered by PHP; this refresh keeps it updated after cart changes.
         window.updateHeaderCounts = function() {
-            // Cart
-            fetch(CART_COUNT_URL, {
-                    credentials: 'same-origin'
-                })
-                .then(r => r.json())
-                .then(r => {
-                    const count = r.itemsCount || r.count || 0;
-                    document.querySelectorAll('.cartItemsCount').forEach(el => {
-                        el.textContent = count;
-                        el.style.display = count > 0 ? 'flex' : 'none';
-                    });
-                })
-                .catch(err => console.warn('[cart-count]', err, CART_COUNT_URL));
+            const url = new URL(CART_COUNT_URL, window.location.origin);
+            if (STORE_SLUG) url.searchParams.set('store', STORE_SLUG);
 
-            // Wishlist
-            fetch(WISHLIST_COUNT_URL, {
-                    credentials: 'same-origin'
+            fetch(url.toString(), { credentials: 'same-origin' })
+                .then(response => {
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    return response.json();
                 })
-                .then(r => r.json())
-                .then(r => {
-                    const count = r.count || r.wishlistCount || 0;
-                    document.querySelectorAll('.wishlistItemsCount').forEach(el => {
-                        el.textContent = count;
-                        el.style.display = count > 0 ? 'flex' : 'none';
+                .then(data => {
+                    const rawCount = data.itemsCount ?? data.count ?? data.cart_count ?? data.total_items ?? 0;
+                    const count = Math.max(0, parseInt(rawCount, 10) || 0);
+                    document.querySelectorAll('.cartItemsCount').forEach(badge => {
+                        badge.textContent = count > 99 ? '99+' : count;
+                        badge.style.display = count > 0 ? 'flex' : 'none';
                     });
                 })
-                .catch(() => {
-                    document.querySelectorAll('.wishlistItemsCount').forEach(el => {
-                        el.style.display = 'none';
-                    });
-                });
+                .catch(error => console.warn('[theme17-cart-count]', error));
         };
 
+        // Keep the existing cart refresh hook, without adding another count function.
         window.refreshCartUI = window.refreshCartUI || window.updateHeaderCounts;
-
         document.addEventListener('DOMContentLoaded', () => setTimeout(window.updateHeaderCounts, 300));
     })();
 </script>

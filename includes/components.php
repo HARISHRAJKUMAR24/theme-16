@@ -267,13 +267,13 @@ if (!function_exists('getProductHtml')) {
             <div class="t9-qv-info">
                 <h2 class="t9-qv-title" id="t9QvTitle"></h2>
 
-                
+
                 <div class="t9-qv-price-row">
                     <span class="t9-qv-mrp" id="t9QvMrp"></span>
                     <span class="t9-qv-price" id="t9QvPrice"></span>
                     <span class="t9-qv-save" id="t9QvSave"></span>
                 </div>
-                
+
 
                 <div class="t9-qv-stock" id="t9QvStock"></div>
 
@@ -493,34 +493,48 @@ if (!function_exists('getProductHtml')) {
         bottom: 8px;
         left: 44px;
         right: 44px;
-        z-index: 2;
-        padding: 8px 6px;
-        background: #f45d79;
-        color: #fff;
+        z-index: 5;
+        /* raised above size chips */
+        padding: 9px 6px;
+        background: var(--t9-hover, #e84caa) !important;
+        /* solid pink bg */
+        color: #fff !important;
+        /* white text */
         border: 0;
         font-size: 10px;
-        font-weight: 500;
-        letter-spacing: .5px;
+        font-weight: 600;
+        letter-spacing: .8px;
         text-align: center;
+        text-transform: uppercase;
         cursor: pointer;
         opacity: 0;
         transform: translateY(6px);
         transition: opacity .25s ease, transform .25s ease, background .2s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+        /* keeps it visible over image */
+        -webkit-backface-visibility: hidden;
+        /* fixes Safari paint */
+        backface-visibility: hidden;
     }
 
+    /* Show on card hover */
     .t9-product-card:hover .t9-quickview-btn {
         opacity: 1;
         transform: translateY(0);
     }
 
+    /* Button hover = darker pink */
     .t9-quickview-btn:hover {
-        background: #e84caa;
+        background: var(--t9-primary, #ff007f) !important;
+        color: #fff !important;
     }
 
+    /* Mobile: always visible */
     @media (max-width: 768px) {
         .t9-quickview-btn {
             opacity: 1;
             transform: none;
+            background: var(--t9-hover, #e84caa) !important;
         }
     }
 
