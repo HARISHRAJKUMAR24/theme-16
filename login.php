@@ -298,19 +298,19 @@ $hover_color   = getData("hover_color", "seller_settings", "(seller_id='$sellerI
             margin-top: 5px;
             padding: 12px 18px;
             border: none;
-            border-radius: 11px;
+           
             background: var(--primary);
             color: #fff;
             font-size: 13px;
             font-weight: 800;
             letter-spacing: .3px;
             cursor: pointer;
-            transition: background .2s, transform .2s, box-shadow .2s;
+            
         }
 
         .t17-login-button:hover {
             background: var(--hover-color);
-            box-shadow: 0 6px 18px color-mix(in srgb, var(--primary) 18%, transparent);
+           
         }
 
         .t17-login-button:active {
@@ -610,7 +610,7 @@ $hover_color   = getData("hover_color", "seller_settings", "(seller_id='$sellerI
                             class="t17-login-button login">
 
                             <span>LOGIN TO YOUR ACCOUNT</span>
-                            <span aria-hidden="true">→</span>
+                           
 
                         </button>
 

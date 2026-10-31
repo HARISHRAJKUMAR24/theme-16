@@ -270,6 +270,7 @@ $hover_color   = getData("hover_color", "seller_settings", "(seller_id='$sellerI
             </section>
         </div>
     </main>
+        <?php include_once __DIR__ . '/includes/floting-cart.php' ?>
     <?php include_once __DIR__ . "/includes/footer.php"; ?>
 </body>
 

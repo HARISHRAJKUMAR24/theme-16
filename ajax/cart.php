@@ -341,9 +341,8 @@ foreach ($cartItems as $key => $cart) {
 
         const rem = e.target.closest('.removeQtyBtn');
         if (rem) {
-            if (confirm('Remove item from cart?')) {
-                removeCartItem(rem.dataset.id, rem.dataset.variant, rem.dataset.advancedvariant);
-            }
+            // Remove immediately without a confirmation popup
+            removeCartItem(rem.dataset.id, rem.dataset.variant, rem.dataset.advancedvariant);
         }
     });
 

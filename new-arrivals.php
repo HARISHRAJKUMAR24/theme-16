@@ -497,7 +497,7 @@
     <!-- THEME 13 PRODUCT COMPONENTS (modal + toast + add-to-cart JS) -->
     <!-- ============================================================ -->
 
-
+    <?php include_once __DIR__ . '/includes/floting-cart.php' ?>
     <?php include_once __DIR__ . "/includes/footer.php"; ?>
 
     <script>

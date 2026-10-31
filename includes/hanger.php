@@ -1232,6 +1232,7 @@ if (!function_exists('getHangerProductHtml')) {
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
     .t9-desc-toggle {
         margin-top: 8px;
         padding: 0;
@@ -1474,6 +1475,194 @@ if (!function_exists('getHangerProductHtml')) {
             scroll-behavior: auto !important;
         }
     }
+
+    .products-scroll {
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* Edge / IE */
+    }
+
+    .products-scroll::-webkit-scrollbar {
+        display: none;
+        /* Chrome / Safari */
+        width: 0;
+        height: 0;
+    }
+
+    /* ================= COMPACT RESPONSIVE HANGER ================= */
+    @media (max-width: 600px) {
+        .collection {
+            padding: 10px 0 6px !important;
+        }
+
+        .heading {
+            padding: 0 10px;
+            margin-bottom: 6px;
+        }
+
+        .heading small {
+            font-size: 8px;
+            letter-spacing: 1.8px;
+        }
+
+        .heading h1 {
+            font-size: 21px;
+            line-height: 1.15;
+            margin: 3px 0 2px;
+        }
+
+        .heading p {
+            font-size: 10px;
+            line-height: 1.3;
+        }
+
+        .rail-scene {
+            height: 10px;
+        }
+
+        .steel-rod {
+            left: 18px;
+            right: 18px;
+            height: 5px;
+        }
+
+        .rail-bracket {
+            width: 18px;
+            height: 12px;
+        }
+
+        .products-scroll {
+            padding: 0 10px;
+        }
+
+        .products {
+            gap: 9px;
+        }
+
+        .product {
+            flex: 0 0 158px;
+            width: 158px;
+        }
+
+        .product-visual {
+            height: 224px;
+        }
+
+        .hanging-assembly {
+            top: -5px;
+            height: 216px;
+        }
+
+        .thread {
+            height: 23px;
+        }
+
+        .shirt-stage {
+            top: 20px;
+            height: 196px;
+        }
+
+        .price-tag {
+            top: 4px;
+            right: 3px;
+            width: 43px;
+            min-height: 49px;
+            padding: 7px 2px 3px;
+            gap: 2px;
+        }
+
+        .tag-price {
+            font-size: 8px;
+        }
+
+        .tag-mrp {
+            font-size: 5.5px;
+        }
+
+        .tag-save {
+            padding: 2px;
+            font-size: 4.5px;
+        }
+
+        .size-stack {
+            left: 3px;
+            bottom: 3px;
+            gap: 2px;
+            width: calc(100% - 6px);
+            max-width: calc(100% - 6px);
+        }
+
+        .size-option {
+            max-width: 40px;
+            height: 15px;
+            padding: 0 3px;
+            font-size: 7.5px;
+        }
+
+        .scroll-controls {
+            gap: 6px;
+            padding: 5px 10px 0;
+        }
+
+        .scroll-controls button {
+            width: 30px;
+            height: 30px;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 380px) {
+        .collection {
+            padding-top: 7px !important;
+            padding-bottom: 4px !important;
+        }
+
+        .heading {
+            margin-bottom: 4px;
+        }
+
+        .heading h1 {
+            font-size: 19px;
+        }
+
+        .products-scroll {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        .products {
+            gap: 7px;
+        }
+
+        .product {
+            flex-basis: 146px;
+            width: 146px;
+        }
+
+        .product-visual {
+            height: 208px;
+        }
+
+        .hanging-assembly {
+            height: 200px;
+        }
+
+        .shirt-stage {
+            top: 19px;
+            height: 181px;
+        }
+
+        .thread {
+            height: 22px;
+        }
+
+        .price-tag {
+            width: 40px;
+            min-height: 45px;
+        }
+    }
+
 </style>
 
 <script>
@@ -2143,7 +2332,9 @@ if (!function_exists('getHangerProductHtml')) {
                     type: 'POST',
                     data: payload,
                     dataType: 'text',
-                    xhrFields: { withCredentials: true },
+                    xhrFields: {
+                        withCredentials: true
+                    },
                     success: raw => {
                         let res;
                         try {

@@ -42,9 +42,16 @@ $moreCats    = array_slice($parentCats, 6);
 $quickCategories = getCategories();
 $quickCats = $quickCategories ? array_slice($quickCategories->fetchAll(PDO::FETCH_ASSOC), 0, 5) : [];
 
-// ==================== AJAX BASE (FIX FOR 404) ====================
-// All backend endpoints live at APP_URL (project root), NOT under $storeUrl.
-$ajaxBase = rtrim(APP_URL, '/') . '/';
+// ==================== AJAX BASE (CUSTOM DOMAIN SUPPORT) ====================
+// Keep the application subfolder, but send requests through the current store
+// domain so the store's session/cookies are available on custom domains.
+$appBasePath = parse_url(APP_URL, PHP_URL_PATH) ?: '/';
+$appBasePath = '/' . trim($appBasePath, '/');
+if ($appBasePath === '/') {
+    $ajaxBase = '/';
+} else {
+    $ajaxBase = rtrim($appBasePath, '/') . '/';
+}
 ?>
 
 
@@ -222,10 +229,10 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
 <!-- SEARCH OVERLAY (slides DOWN from TOP)               -->
 <!-- ================================================== -->
 <div id="searchOverlay"
-    class="invisible fixed inset-0 z-[100] bg-black/40 opacity-0 transition-opacity duration-300"
+    class="invisible fixed inset-0 z-[100] bg-black/40 opacity-0 transition-opacity duration-300 ease-out"
     aria-hidden="true">
     <div id="searchPanel"
-        class="absolute left-0 top-0 w-full -translate-y-full bg-white px-5 pb-6 pt-5 shadow-xl transition-transform duration-500 ease-out sm:px-[6%]"
+        class="absolute left-0 top-0 w-full -translate-y-full bg-white px-5 pb-6 pt-5 shadow-xl transition-transform duration-400 ease-[cubic-bezier(.22,1,.36,1)] sm:px-[6%]"
         role="dialog" aria-modal="true" aria-label="Search">
 
         <div class="mb-4 flex items-center justify-between">
@@ -274,10 +281,10 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
 <!-- NAVIGATION POPUP (slides UP from BOTTOM, Theme 17)  -->
 <!-- ================================================== -->
 <div id="menuOverlay"
-    class="invisible fixed inset-0 z-[110] bg-black/40 opacity-0 transition-opacity duration-300"
+    class="invisible fixed inset-0 z-[110] bg-black/40 opacity-0 transition-opacity duration-300 ease-out"
     aria-hidden="true">
     <div id="menuPanel"
-        class="absolute bottom-0 left-0 max-h-[85vh] w-full translate-y-full overflow-y-auto rounded-t-2xl bg-white px-5 pb-7 pt-4 shadow-xl transition-transform duration-500 ease-out sm:px-[6%]"
+        class="absolute bottom-0 left-0 max-h-[85vh] w-full translate-y-full overflow-y-auto rounded-t-2xl bg-white px-5 pb-7 pt-4 shadow-xl transition-transform duration-400 ease-[cubic-bezier(.22,1,.36,1)] sm:px-[6%]"
         role="dialog" aria-modal="true" aria-label="Menu">
 
         <div class="mx-auto mb-5 h-1 w-10 rounded-full bg-neutral-300"></div>
@@ -497,10 +504,11 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
     (function() {
         'use strict';
 
-        // ================= FIXED URLS =================
-        // All AJAX endpoints live at APP_URL root, NOT under $storeUrl.
-        const AJAX_BASE = <?= json_encode($ajaxBase) ?>; // e.g. "/seller_website/"
-        const STORE_URL = <?= json_encode($storeUrl) ?>; // e.g. "/seller_website/toy-shop/"
+        // ================= CUSTOM-DOMAIN-AWARE URLS =================
+        // Use the current host for AJAX so custom-domain session cookies are sent.
+        const AJAX_BASE_PATH = <?= json_encode($ajaxBase) ?>;
+        const AJAX_BASE = window.location.origin + AJAX_BASE_PATH;
+        const STORE_URL = <?= json_encode($storeUrl) ?>;
         const UPLOADS_URL_JS = <?= json_encode(UPLOADS_URL) ?>;
         const APP_URL_JS = <?= json_encode(APP_URL) ?>;
         const STORE_SLUG = <?= json_encode($storeSlug ?? '') ?>;
@@ -694,14 +702,21 @@ $ajaxBase = rtrim(APP_URL, '/') . '/';
         window.updateHeaderCounts = function() {
             const url = new URL(CART_COUNT_URL, window.location.origin);
             if (STORE_SLUG) url.searchParams.set('store', STORE_SLUG);
+            url.searchParams.set('_', Date.now().toString());
 
-            fetch(url.toString(), { credentials: 'same-origin' })
+            fetch(url.toString(), {
+                method: 'GET',
+                credentials: 'same-origin',
+                cache: 'no-store',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            })
                 .then(response => {
                     if (!response.ok) throw new Error('HTTP ' + response.status);
                     return response.json();
                 })
                 .then(data => {
-                    const rawCount = data.itemsCount ?? data.count ?? data.cart_count ?? data.total_items ?? 0;
+                    const rawCount = data.itemsCount ?? data.items_count ?? data.cartItemsCount ??
+                        data.count ?? data.cart_count ?? data.total_items ?? 0;
                     const count = Math.max(0, parseInt(rawCount, 10) || 0);
                     document.querySelectorAll('.cartItemsCount').forEach(badge => {
                         badge.textContent = count > 99 ? '99+' : count;

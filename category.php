@@ -493,7 +493,7 @@ if ($hasSubCategories) {
     </div>
 
     <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 hidden z-[9998] transition-opacity duration-300"></div>
-
+    <?php include_once __DIR__ . '/includes/floting-cart.php' ?>
     <?php include_once __DIR__ . "/includes/footer.php"; ?>
 
     <?php if (isset($_GET['variation'])): ?>

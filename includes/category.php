@@ -71,7 +71,7 @@ if ($stmt) {
 
             <!-- BOTTOM LINK -->
             <div class="category-bottom">
-                <a href="<?= $storeUrl ?>collections">
+                <a href="<?= $storeUrl ?>shop-all">
                     DISCOVER ALL COLLECTIONS
                     <span>↗</span>
                 </a>

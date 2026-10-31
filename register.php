@@ -251,19 +251,19 @@ $hover_color   = getData("hover_color", "seller_settings", "(seller_id='$sellerI
             margin-top: 5px;
             padding: 12px 18px;
             border: none;
-            border-radius: 11px;
+           
             background: linear-gradient(135deg, var(--primary-color), var(--hover-color));
             color: #fff;
             font-size: 13px;
             font-weight: 800;
             letter-spacing: .3px;
             cursor: pointer;
-            transition: background .2s, transform .2s, box-shadow .2s;
+           
         }
 
         .t17-register-button:hover {
             background: linear-gradient(135deg, var(--hover-color), var(--primary-color));
-            box-shadow: 0 6px 18px color-mix(in srgb, var(--primary-color) 22%, transparent);
+          
         }
 
         .t17-register-button:active {
@@ -598,7 +598,7 @@ $hover_color   = getData("hover_color", "seller_settings", "(seller_id='$sellerI
                             class="t17-register-button">
 
                             <span>CONTINUE WITH OTP</span>
-                            <span aria-hidden="true">→</span>
+                          
 
                         </button>
 
@@ -636,8 +636,7 @@ $hover_color   = getData("hover_color", "seller_settings", "(seller_id='$sellerI
                             class="t17-register-button">
 
                             <span>CREATE ACCOUNT</span>
-                            <span aria-hidden="true">→</span>
-
+                            
                         </button>
 
                     </div>

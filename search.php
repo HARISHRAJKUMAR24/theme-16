@@ -469,7 +469,7 @@
             </div>
         </div>
     </div>
-
+    <?php include_once __DIR__ . '/includes/floting-cart.php' ?>
     <?php include_once __DIR__ . "/includes/footer.php"; ?>
 
     <script>

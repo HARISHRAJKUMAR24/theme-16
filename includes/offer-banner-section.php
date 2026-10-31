@@ -41,7 +41,7 @@ for ($i = 1; $i <= 2; $i++) {
 <style>
     /* ============ SECTION ============ */
     .sbs-section {
-        padding: 20px 16px;
+        padding: 12px 16px 6px;
         background: #ffffff;
     }
 
@@ -66,7 +66,7 @@ for ($i = 1; $i <= 2; $i++) {
     .sbs-slide {
         flex: 0 0 100%;
         width: 100%;
-        aspect-ratio: 16 / 5;
+        aspect-ratio: 16 / 4.5;
         overflow: hidden;
     }
 
@@ -74,29 +74,35 @@ for ($i = 1; $i <= 2; $i++) {
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
         user-select: none;
         -webkit-user-drag: none;
     }
 
-    /* ============ RESPONSIVE ============ */
+    /* ============ TABLET ============ */
     @media (max-width: 900px) {
         .sbs-section {
-            padding: 14px 10px;
+            padding: 8px 10px 4px;
         }
 
         .sbs-slide {
-            aspect-ratio: 2 / 1;
+            aspect-ratio: 16 / 5;
         }
     }
 
+    /* ============ MOBILE ============ */
     @media (max-width: 520px) {
+        .sbs-section {
+            padding: 5px 7px 2px;
+        }
+
         .sbs-slide {
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 16 / 5;
         }
     }
 
+    /* ============ REDUCED MOTION ============ */
     @media (prefers-reduced-motion: reduce) {
         .sbs-track {
             transition: none;

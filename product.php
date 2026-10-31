@@ -4,7 +4,8 @@
 $primary_color = getData("color", "seller_settings", "(seller_id='$sellerId' AND store_id='$storeId')") ?? '#a13d91';
 $hover_color   = getData("hover_color", "seller_settings", "(seller_id='$sellerId' AND store_id='$storeId')") ?? '#84366f';
 
-function getRandomProducts($limit = 3) {
+function getRandomProducts($limit = 3)
+{
     $stmt = getProducts();
     $allProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     shuffle($allProducts);
@@ -13,6 +14,7 @@ function getRandomProducts($limit = 3) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php include_once __DIR__ . "/includes/head_links.php"; ?>
     <style>
@@ -20,62 +22,146 @@ function getRandomProducts($limit = 3) {
             --t17-primary: <?= $primary_color ?>;
             --t17-hover: <?= $hover_color ?>;
         }
-        body { background-color: #faf8f5; font-family: 'Inter', sans-serif; }
-        
-        .t17-title { font-family: 'Playfair Display', Georgia, serif; }
-        
+
+        body {
+            background-color: #faf8f5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .t17-title {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
         /* Elegant Image Gallery */
-        .t17-gallery { display: flex; gap: 16px; align-items: flex-start; }
-        .t17-thumbs { display: flex; flex-direction: column; gap: 12px; width: 72px; flex-shrink: 0; }
+        .t17-gallery {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .t17-thumbs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 72px;
+            flex-shrink: 0;
+        }
+
         .t17-thumb {
-            width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px;
-            border: 1px solid #e5e5e5; cursor: pointer; transition: all .2s;
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #e5e5e5;
+            cursor: pointer;
+            transition: all .2s;
             background: #fff;
         }
-        .t17-thumb.active, .t17-thumb:hover { border-color: var(--t17-primary); }
+
+        .t17-thumb.active,
+        .t17-thumb:hover {
+            border-color: var(--t17-primary);
+        }
+
         .t17-main-img {
-            flex: 1; aspect-ratio: 3/4; object-fit: cover;
-            border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            flex: 1;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             background: #fff;
         }
 
         /* Elegant Buttons */
         .t17-btn-primary {
-            background: var(--t17-primary); color: #fff;
-            padding: 14px 24px; font-size: 11px; font-weight: 700;
-            letter-spacing: 2px; text-transform: uppercase;
-            border-radius: 4px; transition: all .3s;
-            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--t17-primary);
+            color: #fff;
+            padding: 14px 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all .3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
-        .t17-btn-primary:hover:not(:disabled) { background: var(--t17-hover); }
-        .t17-btn-primary:disabled { opacity: .5; cursor: not-allowed; }
-        
+
+        .t17-btn-primary:hover:not(:disabled) {
+            background: var(--t17-hover);
+        }
+
+        .t17-btn-primary:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
         .t17-btn-outline {
-            background: transparent; color: #111; border: 1px solid #111;
-            padding: 14px 24px; font-size: 11px; font-weight: 700;
-            letter-spacing: 2px; text-transform: uppercase;
-            border-radius: 4px; transition: all .3s;
+            background: transparent;
+            color: #111;
+            border: 1px solid #111;
+            padding: 14px 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all .3s;
         }
-        .t17-btn-outline:hover { background: #111; color: #fff; }
+
+        .t17-btn-outline:hover {
+            background: #111;
+            color: #fff;
+        }
 
         /* Variant Selectors */
         .t17-variant-btn {
-            border: 1px solid #d4d4d4; background: #fff; color: #111;
-            padding: 8px 16px; font-size: 11px; font-weight: 600;
-            letter-spacing: 1px; text-transform: uppercase;
-            border-radius: 2px; transition: all .2s;
+            border: 1px solid #d4d4d4;
+            background: #fff;
+            color: #111;
+            padding: 8px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all .2s;
         }
-        .t17-variant-btn:hover:not(:disabled) { border-color: #111; }
-        .t17-variant-btn.active { background: #111; color: #fff; border-color: #111; }
-        .t17-variant-btn:disabled { opacity: .4; text-decoration: line-through; cursor: not-allowed; }
+
+        .t17-variant-btn:hover:not(:disabled) {
+            border-color: #111;
+        }
+
+        .t17-variant-btn.active {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+        }
+
+        .t17-variant-btn:disabled {
+            opacity: .4;
+            text-decoration: line-through;
+            cursor: not-allowed;
+        }
 
         .t17-color-btn {
-            width: 32px; height: 32px; border-radius: 50%; border: 2px solid #e5e5e5;
-            cursor: pointer; transition: all .2s; padding: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #e5e5e5;
+            cursor: pointer;
+            transition: all .2s;
+            padding: 0;
         }
-        .t17-color-btn.active { box-shadow: 0 0 0 2px var(--t17-primary), 0 0 0 4px #fff; border-color: var(--t17-primary); }
+
+        .t17-color-btn.active {
+            box-shadow: 0 0 0 2px var(--t17-primary), 0 0 0 4px #fff;
+            border-color: var(--t17-primary);
+        }
     </style>
 </head>
+
 <body class="text-[#111]">
 
 
@@ -135,9 +221,14 @@ function getRandomProducts($limit = 3) {
                 $groupedVariants[$colorId] = ['color_name' => $colorName, 'color_code' => $colorCode, 'sizes' => []];
             }
             $groupedVariants[$colorId]['sizes'][] = [
-                'id' => $bv['id'], 'size' => $size, 'price' => $bv['price'], 'mrp_price' => $bv['mrp_price'],
-                'stock' => $bv['stock'] ?? 0, 'unlimited_stock' => $bv['unlimited_stock'] ?? 0,
-                'unit_type' => $bv['unit_type'] ?? $unit_type, 'image' => $bv['image'] ?? $image
+                'id' => $bv['id'],
+                'size' => $size,
+                'price' => $bv['price'],
+                'mrp_price' => $bv['mrp_price'],
+                'stock' => $bv['stock'] ?? 0,
+                'unlimited_stock' => $bv['unlimited_stock'] ?? 0,
+                'unit_type' => $bv['unit_type'] ?? $unit_type,
+                'image' => $bv['image'] ?? $image
             ];
         }
     }
@@ -174,7 +265,7 @@ function getRandomProducts($limit = 3) {
     <!-- ========================================== -->
     <section class="py-12 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            
+
             <!-- LEFT: GALLERY -->
             <div class="t17-gallery order-1 lg:order-1">
                 <div class="t17-thumbs hidden sm:flex">
@@ -197,7 +288,7 @@ function getRandomProducts($limit = 3) {
 
             <!-- RIGHT: INFO -->
             <div class="flex flex-col justify-start order-2 lg:order-2">
-                
+
                 <p class="text-[10px] uppercase tracking-[3px] text-gray-400 mb-2"><?= htmlspecialchars($variation ?: 'New Arrival') ?></p>
                 <h1 class="t17-title text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight text-[#111] mb-4">
                     <?= htmlspecialchars($name) ?>
@@ -242,7 +333,8 @@ function getRandomProducts($limit = 3) {
                                     <?php else: ?>
                                         <select class="combo-variant-select w-full p-3 border border-gray-200 rounded text-sm">
                                             <option value="">Select Variant</option>
-                                            <?php $basicVariants->execute(); while ($bv = $basicVariants->fetch()): ?>
+                                            <?php $basicVariants->execute();
+                                            while ($bv = $basicVariants->fetch()): ?>
                                                 <option value="<?= $bv['id'] ?>" data-variant-name="<?= htmlspecialchars($bv['variation'] ?? $bv['name']) ?>" data-price="<?= $bv['price'] ?>" data-image="<?= UPLOADS_URL . ($bv['image'] ?? $image) ?>"><?= htmlspecialchars($bv['variation'] ?? $bv['name']) ?></option>
                                             <?php endwhile; ?>
                                         </select>
@@ -253,39 +345,43 @@ function getRandomProducts($limit = 3) {
                         </div>
                     </div>
 
-                <!-- VARIANTS: ADVANCED -->
+                    <!-- VARIANTS: ADVANCED -->
                 <?php elseif ($isAdvanced && !empty($groupedVariants)): ?>
                     <div class="mb-8">
                         <p class="text-[10px] font-bold uppercase tracking-wider mb-3">Select Color</p>
                         <div id="colorContainer" class="flex flex-wrap gap-3 mb-6">
-                            <?php $firstColor = true; foreach ($groupedVariants as $colorId => $colorData): ?>
-                                <button class="t17-color-btn <?= $firstColor ? 'active' : '' ?>" 
-                                        style="background-color: <?= $colorData['color_code'] ?>;"
-                                        data-color-id="<?= $colorId ?>" data-color-name="<?= htmlspecialchars($colorData['color_name']) ?>">
+                            <?php $firstColor = true;
+                            foreach ($groupedVariants as $colorId => $colorData): ?>
+                                <button class="t17-color-btn <?= $firstColor ? 'active' : '' ?>"
+                                    style="background-color: <?= $colorData['color_code'] ?>;"
+                                    data-color-id="<?= $colorId ?>" data-color-name="<?= htmlspecialchars($colorData['color_name']) ?>">
                                 </button>
-                            <?php $firstColor = false; endforeach; ?>
+                            <?php $firstColor = false;
+                            endforeach; ?>
                         </div>
 
                         <?php foreach ($groupedVariants as $colorId => $colorData): ?>
                             <div class="size-group <?= $colorId === array_key_first($groupedVariants) ? '' : 'hidden' ?>" data-color-id="<?= $colorId ?>">
                                 <p class="text-[10px] font-bold uppercase tracking-wider mb-3">Select Size</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <?php $firstSize = true; foreach ($colorData['sizes'] as $sizeData): 
+                                    <?php $firstSize = true;
+                                    foreach ($colorData['sizes'] as $sizeData):
                                         $isOutOfStock = (!$sizeData['unlimited_stock'] && $sizeData['stock'] <= 0);
                                         $isInCart = in_array($sizeData['id'], $cartVariants);
                                     ?>
-                                        <button class="t17-variant-btn size-btn <?= $isInCart ? 'active' : '' ?>" 
-                                                data-variant-id="<?= $sizeData['id'] ?>" data-color-id="<?= $colorId ?>" data-size="<?= $sizeData['size'] ?>" data-price="<?= $sizeData['price'] ?>" data-mrp="<?= $sizeData['mrp_price'] ?>" data-stock="<?= $sizeData['unlimited_stock'] ? 'Unlimited' : $sizeData['stock'] ?>" data-image="<?= UPLOADS_URL . $sizeData['image'] ?>" data-in-cart="<?= $isInCart ? 1 : 0 ?>"
-                                                <?= $isOutOfStock ? 'disabled' : '' ?>>
+                                        <button class="t17-variant-btn size-btn <?= $isInCart ? 'active' : '' ?>"
+                                            data-variant-id="<?= $sizeData['id'] ?>" data-color-id="<?= $colorId ?>" data-size="<?= $sizeData['size'] ?>" data-price="<?= $sizeData['price'] ?>" data-mrp="<?= $sizeData['mrp_price'] ?>" data-stock="<?= $sizeData['unlimited_stock'] ? 'Unlimited' : $sizeData['stock'] ?>" data-image="<?= UPLOADS_URL . $sizeData['image'] ?>" data-in-cart="<?= $isInCart ? 1 : 0 ?>"
+                                            <?= $isOutOfStock ? 'disabled' : '' ?>>
                                             <?= htmlspecialchars($sizeData['size']) ?>
                                         </button>
-                                    <?php $firstSize = false; endforeach; ?>
+                                    <?php $firstSize = false;
+                                    endforeach; ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
 
-                <!-- VARIANTS: BASIC -->
+                    <!-- VARIANTS: BASIC -->
                 <?php elseif ($basicVariants && $basicVariants->rowCount() > 0 && !$isAdvanced): ?>
                     <div class="mb-8">
                         <p class="text-[10px] font-bold uppercase tracking-wider mb-3">Select Option</p>
@@ -293,7 +389,8 @@ function getRandomProducts($limit = 3) {
                             <button class="t17-variant-btn variant-btn <?= $initialVariantId === null ? 'active' : '' ?>" data-variant-id="main" data-variant-image="<?= UPLOADS_URL . $image ?>" data-variant-name="<?= htmlspecialchars($variation ?: $name) ?>" data-price="<?= $price ?>" data-mrp="<?= $mrp_price ?>" data-stock="<?= $mainStockDisplay ?>" data-in-cart="<?= in_array('main', $cartVariants) ? 1 : 0 ?>">
                                 <?= htmlspecialchars($variation ?: $name) ?>
                             </button>
-                            <?php $basicVariants->execute(); while ($bv = $basicVariants->fetch()): ?>
+                            <?php $basicVariants->execute();
+                            while ($bv = $basicVariants->fetch()): ?>
                                 <button class="t17-variant-btn variant-btn <?= $initialVariantId == $bv['id'] ? 'active' : '' ?>" data-variant-id="<?= $bv['id'] ?>" data-variant-image="<?= UPLOADS_URL . ($bv['image'] ?? $image) ?>" data-variant-name="<?= htmlspecialchars($bv['variation'] ?? $bv['name']) ?>" data-price="<?= $bv['price'] ?>" data-mrp="<?= $bv['mrp_price'] ?>" data-stock="<?= $variantStocksDisplay[$bv['id']] ?? 'Out of stock' ?>" data-in-cart="<?= in_array($bv['id'], $cartVariants) ? 1 : 0 ?>">
                                     <?= htmlspecialchars($bv['variation'] ?? $bv['name']) ?>
                                 </button>
@@ -322,7 +419,7 @@ function getRandomProducts($limit = 3) {
                     </a>
 
                     <!-- Wishlist -->
-                    <?php if (isLoggedIn()): 
+                    <?php if (isLoggedIn()):
                         $inWishlist = getData("id", "customer_wishlists", "customer_id='$customerId' AND product_id='$id' AND other=''") ? true : false;
                     ?>
                         <button id="wishlistBtn" data-id="<?= $id ?>" data-variant="" class="w-12 h-12 flex items-center justify-center border border-gray-300 rounded handleWishlist <?= $inWishlist ? 'bg-rose-50 border-rose-200 text-rose-500' : 'bg-white text-gray-500' ?>">
@@ -353,33 +450,33 @@ function getRandomProducts($limit = 3) {
     $randomProducts = getRandomProducts(4);
     if ($randomProducts && count($randomProducts) > 0) :
     ?>
-    <section class="py-16 border-t border-gray-200 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-10">
-            <h2 class="t17-title text-2xl sm:text-3xl text-[#111]">Customers Also Bought</h2>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            <?php foreach ($randomProducts as $rp): 
-                $rpImg = UPLOADS_URL . $rp['image'];
-                $rpSlug = $rp['slug'];
-                $rpName = $rp['name'];
-                $rpPrice = $rp['price'];
-                $rpMrp = $rp['mrp_price'];
-            ?>
-            <a href="<?= $storeUrl . 'product/' . $rpSlug ?>" class="group block">
-                <div class="aspect-[3/4] overflow-hidden bg-white mb-3">
-                    <img src="<?= $rpImg ?>" alt="<?= htmlspecialchars($rpName) ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <h3 class="text-sm font-medium text-[#111] uppercase tracking-wide mb-1 line-clamp-1"><?= htmlspecialchars($rpName) ?></h3>
-                <div class="flex items-center gap-2">
-                    <span class="text-sm font-bold text-[var(--t17-primary)]"><?= currencyToSymbol($storeCurrency) . $rpPrice ?></span>
-                    <?php if ($rpMrp > $rpPrice): ?>
-                        <span class="text-xs text-gray-400 line-through"><?= currencyToSymbol($storeCurrency) . $rpMrp ?></span>
-                    <?php endif; ?>
-                </div>
-            </a>
-            <?php endforeach; ?>
-        </div>
-    </section>
+        <section class="py-16 border-t border-gray-200 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-10">
+                <h2 class="t17-title text-2xl sm:text-3xl text-[#111]">Customers Also Bought</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                <?php foreach ($randomProducts as $rp):
+                    $rpImg = UPLOADS_URL . $rp['image'];
+                    $rpSlug = $rp['slug'];
+                    $rpName = $rp['name'];
+                    $rpPrice = $rp['price'];
+                    $rpMrp = $rp['mrp_price'];
+                ?>
+                    <a href="<?= $storeUrl . 'product/' . $rpSlug ?>" class="group block">
+                        <div class="aspect-[3/4] overflow-hidden bg-white mb-3">
+                            <img src="<?= $rpImg ?>" alt="<?= htmlspecialchars($rpName) ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                        <h3 class="text-sm font-medium text-[#111] uppercase tracking-wide mb-1 line-clamp-1"><?= htmlspecialchars($rpName) ?></h3>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-bold text-[var(--t17-primary)]"><?= currencyToSymbol($storeCurrency) . $rpPrice ?></span>
+                            <?php if ($rpMrp > $rpPrice): ?>
+                                <span class="text-xs text-gray-400 line-through"><?= currencyToSymbol($storeCurrency) . $rpMrp ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </section>
     <?php endif; ?>
 
     <!-- Report Modal (Theme 9 logic) -->
@@ -397,6 +494,7 @@ function getRandomProducts($limit = 3) {
         </div>
     </div>
 
+    <?php include_once __DIR__ . '/includes/floting-cart.php' ?>
     <?php include_once __DIR__ . "/includes/footer.php"; ?>
 
     <script>
@@ -431,7 +529,7 @@ function getRandomProducts($limit = 3) {
                         colorBtns.forEach(b => b.classList.remove('active'));
                         this.classList.add('active');
                         const colorId = this.dataset.colorId;
-                        
+
                         sizeGroups.forEach(g => {
                             g.classList.toggle('hidden', g.dataset.colorId !== colorId);
                         });
@@ -446,12 +544,12 @@ function getRandomProducts($limit = 3) {
                         if (this.disabled) return;
                         sizeBtns.forEach(b => b.classList.remove('active'));
                         this.classList.add('active');
-                        
+
                         selectedVariantId = this.dataset.variantId;
-                        
+
                         if (this.dataset.image) document.getElementById('t17MainImg').src = this.dataset.image;
                         document.querySelector('.productPrice').textContent = storeCurrencySymbol + parseFloat(this.dataset.price).toLocaleString();
-                        
+
                         if (this.dataset.inCart == 1) {
                             addBtn.classList.add('hidden');
                             viewBtn.classList.remove('hidden');
@@ -500,7 +598,7 @@ function getRandomProducts($limit = 3) {
                     btn.addEventListener('click', function() {
                         varBtns.forEach(b => b.classList.remove('active'));
                         this.classList.add('active');
-                        
+
                         selectedVarId = this.dataset.variantId;
                         if (this.dataset.variantImage) document.getElementById('t17MainImg').src = this.dataset.variantImage;
                         document.querySelector('.productPrice').textContent = storeCurrencySymbol + parseFloat(this.dataset.price).toLocaleString();
@@ -558,4 +656,5 @@ function getRandomProducts($limit = 3) {
         });
     </script>
 </body>
+
 </html>
