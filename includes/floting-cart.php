@@ -85,8 +85,6 @@ $fcbWhatsappNumber = preg_replace(
     </span>
 
     <span class="fcb-cart-label">YOUR CART</span>
-
-    <span class="fcb-cart-arrow">↗</span>
 </a>
 
 
