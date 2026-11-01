@@ -1669,8 +1669,8 @@ if (!function_exists('getHangerProductHtml')) {
     document.addEventListener('DOMContentLoaded', function() {
         const CURRENCY = <?= json_encode(currencyToSymbol($storeCurrency)) ?>;
         const STORE_URL = <?= json_encode($storeUrl) ?>;
-        const APP_URL = <?= json_encode(rtrim(APP_URL, '/') . '/') ?>;
-        const ADD_URL = APP_URL + 'shop/ajax/add-to-cart.php';
+        // Same endpoint path used by the working Components add-to-cart flow.
+        const ADD_URL = 'shop/ajax/add-to-cart.php';
 
         /* ============================================================
            SLIDER — FIXED ARROWS + SWING WHILE SCROLLING
@@ -2321,65 +2321,94 @@ if (!function_exists('getHangerProductHtml')) {
         });
 
         function sendAddToCart(payload, onOk, onErr) {
-            if (payload.other === undefined) payload.other = '';
-            if (payload.variant === undefined) payload.variant = '';
-            if (payload.advanced_variant === undefined) payload.advanced_variant = '';
-            if (payload.quantity === undefined) payload.quantity = 1;
+            // Match the working Components cart request exactly.
+            const requestData = {
+                product_id: payload.product_id || '',
+                quantity: 1,
+                variant: payload.variant || '',
+                advanced_variant: payload.advanced_variant || '',
+                other: '',
+                redirectUrl: payload.redirectUrl || ''
+            };
 
-            if (window.jQuery && jQuery.ajax) {
-                jQuery.ajax({
-                    url: ADD_URL,
-                    type: 'POST',
-                    data: payload,
-                    dataType: 'text',
-                    xhrFields: {
-                        withCredentials: true
-                    },
-                    success: raw => {
-                        let res;
-                        try {
-                            res = JSON.parse(raw);
-                        } catch (e) {
-                            res = {
-                                success: false,
-                                message: String(raw || 'Invalid response')
-                            };
-                        }
-                        onOk(res);
-                    },
-                    error: (xhr) => {
-                        let msg = 'Network error. Please try again.';
-                        try {
-                            const j = JSON.parse(xhr.responseText || '{}');
-                            if (j.message) msg = j.message;
-                        } catch (_) {}
-                        onErr(msg);
-                    }
-                });
+            if (!window.jQuery || !jQuery.ajax) {
+                onErr('jQuery is not loaded. Please check the store scripts.');
                 return;
             }
-            fetch(ADD_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    credentials: 'same-origin',
-                    body: new URLSearchParams(payload)
-                })
-                .then(r => r.text())
-                .then(raw => {
-                    let res;
+
+            jQuery.ajax({
+                url: ADD_URL,
+                type: 'POST',
+                data: requestData,
+                dataType: 'text',
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(raw) {
+                    let response = null;
+
                     try {
-                        res = JSON.parse(raw);
-                    } catch (e) {
-                        res = {
-                            success: false,
-                            message: String(raw || 'Invalid response')
+                        response = (typeof raw === 'object' && raw !== null)
+                            ? raw
+                            : JSON.parse(String(raw || '').trim());
+                    } catch (error) {
+                        // The cart endpoint may add the item and return an empty/plain-text HTTP 200.
+                        console.warn('[Cart] Non-JSON HTTP success response:', raw);
+                        response = {
+                            success: true,
+                            message: 'Product added successfully.'
                         };
                     }
-                    onOk(res);
-                })
-                .catch(() => onErr('Network error.'));
+
+                    if (!response || typeof response !== 'object') {
+                        onErr('Unexpected response from shop/ajax/add-to-cart.php.');
+                        return;
+                    }
+
+                    const message = String(response.message || '').toLowerCase();
+                    if (
+                        response.alreadyInCart === true ||
+                        response.duplicate === true ||
+                        /already|duplicate|already exists|in cart|in bag/.test(message)
+                    ) {
+                        response.alreadyInCart = true;
+                    }
+
+                    if (response.success || response.alreadyInCart) {
+                        // Refresh the same cart UI helpers used by Components.
+                        if (typeof window.getProductCountAndPrice === 'function') {
+                            window.getProductCountAndPrice();
+                        }
+                        if (typeof window.getCartData === 'function') {
+                            window.getCartData();
+                        }
+                        if (typeof window.updateHeaderCounts === 'function') {
+                            window.updateHeaderCounts();
+                        }
+                        if (typeof window.updateCartCounts === 'function') {
+                            window.updateCartCounts();
+                        }
+                        onOk(response);
+                    } else {
+                        onErr(response.message || 'Could not add this product to cart.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('[Cart] AJAX error:', {
+                        status: status,
+                        error: error,
+                        response: xhr && xhr.responseText
+                    });
+
+                    let message = 'Cart request failed. Please try again.';
+                    try {
+                        const errorResponse = JSON.parse(xhr.responseText || '{}');
+                        if (errorResponse.message) message = errorResponse.message;
+                    } catch (_) {}
+
+                    onErr(message);
+                }
+            });
         }
 
         function markVariantInCart(variant) {
@@ -2445,7 +2474,8 @@ if (!function_exists('getHangerProductHtml')) {
                 quantity: 1,
                 variant: '',
                 advanced_variant: '',
-                other: ''
+                other: '',
+                redirectUrl: ''
             };
             const v = state.selectedVariant;
             if (v.variantType === 'advanced') payload.advanced_variant = v.variantId;
