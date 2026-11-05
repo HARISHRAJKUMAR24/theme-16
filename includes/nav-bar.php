@@ -60,10 +60,10 @@ if ($appBasePath === '/') {
 <!-- ================================================== -->
 <?php $minOrder = getSettings("minimum_order_amount"); ?>
 <?php if ($minOrder): ?>
-<div class="flex h-[26px] items-center justify-center px-2 text-center text-[9px] font-bold tracking-[.6px] text-white sm:h-[32px] sm:text-[11px] sm:tracking-[1.5px]"
-    style="background: <?= htmlspecialchars($headerPrimary) ?>;">
-    MINIMUM ORDER <?= currencyToSymbol($storeCurrency) . ' ' . $minOrder ?>
-</div>
+    <div class="flex h-[26px] items-center justify-center px-2 text-center text-[9px] font-bold tracking-[.6px] text-white sm:h-[32px] sm:text-[11px] sm:tracking-[1.5px]"
+        style="background: <?= htmlspecialchars($headerPrimary) ?>;">
+        MINIMUM ORDER <?= currencyToSymbol($storeCurrency) . ' ' . $minOrder ?>
+    </div>
 <?php endif; ?>
 
 <!-- ================================================== -->
@@ -218,8 +218,7 @@ if ($appBasePath === '/') {
 
     <a href="<?= $storeUrl ?>shop-all"
         class="text-[13px] font-semibold uppercase tracking-[.8px] transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">SHOP ALL</a>
-    <a href="<?= $storeUrl ?>reviews"
-        class="text-[13px] font-semibold uppercase tracking-[.8px] transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">REVIEWS</a>
+   
     <a href="<?= $storeUrl ?>track-order"
         class="text-[13px] font-semibold uppercase tracking-[.8px] transition hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">TRACK ORDER</a>
 </nav>
@@ -352,8 +351,7 @@ if ($appBasePath === '/') {
 
             <a href="<?= $storeUrl ?>best-seller"
                 class="flex justify-between border-b border-neutral-100 py-3.5 text-sm font-semibold tracking-wide uppercase hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">BEST SELLER <span>↗</span></a>
-            <a href="<?= $storeUrl ?>reviews"
-                class="flex justify-between border-b border-neutral-100 py-3.5 text-sm font-semibold tracking-wide uppercase hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">REVIEWS <span>↗</span></a>
+           
             <a href="<?= $storeUrl ?>track-order"
                 class="flex justify-between border-b border-neutral-100 py-3.5 text-sm font-semibold tracking-wide uppercase hover:text-[<?= htmlspecialchars($headerPrimary) ?>]">TRACK ORDER <span>↗</span></a>
         </nav>
@@ -705,11 +703,13 @@ if ($appBasePath === '/') {
             url.searchParams.set('_', Date.now().toString());
 
             fetch(url.toString(), {
-                method: 'GET',
-                credentials: 'same-origin',
-                cache: 'no-store',
-                headers: { 'X-Requested-With': 'XMLHttpRequest' }
-            })
+                    method: 'GET',
+                    credentials: 'same-origin',
+                    cache: 'no-store',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
                 .then(response => {
                     if (!response.ok) throw new Error('HTTP ' + response.status);
                     return response.json();

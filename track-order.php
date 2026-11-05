@@ -95,9 +95,7 @@ $hover_color = getData("hover_color", "seller_settings", "(seller_id='$sellerId'
                             Order updates
                         </div>
 
-                        <p class="text-[11px] font-semibold uppercase tracking-[3px] text-slate-400">
-                            Theme 17 · Order care
-                        </p>
+
 
                         <h1 class="mt-3 max-w-sm text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
                             Your order,<br>

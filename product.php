@@ -48,14 +48,53 @@ function getRandomProducts($limit = 3)
         }
 
         .t17-thumb {
+            display: block;
             width: 100%;
             aspect-ratio: 3/4;
             object-fit: cover;
             border-radius: 4px;
             border: 1px solid #e5e5e5;
             cursor: pointer;
-            transition: all .2s;
+            transition: border-color .2s, opacity .2s;
             background: #fff;
+        }
+
+        /* Mobile thumbnails: fixed small tiles, never stretch full width */
+        .t17-mobile-thumbs {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 2px 1px 8px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .t17-mobile-thumbs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .t17-mobile-thumbs .t17-thumb {
+            width: 64px;
+            min-width: 64px;
+            max-width: 64px;
+            height: 82px;
+            min-height: 82px;
+            aspect-ratio: auto;
+            flex: 0 0 64px;
+            object-fit: cover;
+        }
+
+        @media (min-width: 640px) {
+            .t17-mobile-thumbs .t17-thumb {
+                width: 68px;
+                min-width: 68px;
+                max-width: 68px;
+                height: 88px;
+                min-height: 88px;
+                flex-basis: 68px;
+            }
         }
 
         .t17-thumb.active,
@@ -268,16 +307,10 @@ function getRandomProducts($limit = 3)
 
             <!-- LEFT: GALLERY -->
             <div class="t17-gallery order-1 lg:order-1">
-                <div class="t17-thumbs hidden sm:flex">
-                    <img src="<?= UPLOADS_URL . $image ?>" class="t17-thumb active" onclick="document.getElementById('t17MainImg').src=this.src; document.querySelectorAll('.t17-thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');">
-                    <?php foreach ($additionalImages as $img): ?>
-                        <img src="<?= $img ?>" class="t17-thumb" onclick="document.getElementById('t17MainImg').src=this.src; document.querySelectorAll('.t17-thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');">
-                    <?php endforeach; ?>
-                </div>
                 <div class="w-full">
                     <img id="t17MainImg" src="<?= UPLOADS_URL . $image ?>" class="t17-main-img w-full">
                     <!-- Mobile Thumbs -->
-                    <div class="flex sm:hidden gap-2 mt-4 overflow-x-auto pb-2">
+                    <div class="t17-mobile-thumbs">
                         <img src="<?= UPLOADS_URL . $image ?>" class="t17-thumb active w-16" onclick="document.getElementById('t17MainImg').src=this.src; document.querySelectorAll('.t17-thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');">
                         <?php foreach ($additionalImages as $img): ?>
                             <img src="<?= $img ?>" class="t17-thumb w-16" onclick="document.getElementById('t17MainImg').src=this.src; document.querySelectorAll('.t17-thumb').forEach(t=>t.classList.remove('active')); this.classList.add('active');">

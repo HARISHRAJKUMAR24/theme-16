@@ -1259,6 +1259,14 @@ $productCount = count($allProducts);
                 padding: 7px;
             }
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #sm17-collections {
+            scroll-margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -1293,7 +1301,9 @@ $productCount = count($allProducts);
                 <section class="sm17-hero">
                     <h1>Find your<br><span>own thing.</span></h1>
                     <div class="sm17-hero-copy">
-                        <p>Skip the usual browsing. Move through the categories, follow what catches your eye, and discover something new at every turn.</p><a class="sm17-btn" href="#sm17-collections">Start exploring <span>↘</span></a>
+                        <p>Skip the usual browsing. Move through the categories, follow what catches your eye, and discover something new at every turn.</p><a class="sm17-btn" href="javascript:void(0);" id="sm17ExploreBtn">
+                            Start exploring <span>↘</span>
+                        </a>
                         <div class="sm17-counts">
                             <div class="sm17-count"><strong><?= str_pad((string)$categoryCount, 2, '0', STR_PAD_LEFT) ?></strong><span>Collections</span></div>
                             <div class="sm17-count"><strong><?= str_pad((string)$productCount, 2, '0', STR_PAD_LEFT) ?></strong><span>Products to explore</span></div>
@@ -1438,6 +1448,27 @@ $productCount = count($allProducts);
     </main>
     <?php include_once __DIR__ . '/includes/floting-cart.php' ?>
     <?php include_once __DIR__ . "/includes/footer.php"; ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const exploreBtn = document.getElementById("sm17ExploreBtn");
+            const targetSection = document.getElementById("sm17-collections");
+
+            if (exploreBtn && targetSection) {
+
+                exploreBtn.addEventListener("click", function(e) {
+                    e.preventDefault();
+
+                    targetSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                });
+
+            }
+
+        });
+    </script>
 </body>
 
 </html>
